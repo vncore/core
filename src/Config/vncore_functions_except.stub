@@ -1,0 +1,7 @@
+<?php
+
+return 
+[
+    // List functions helpers vncore_xx will inactive
+    // example: 'vncore_function1', 'vncore_function2',
+];

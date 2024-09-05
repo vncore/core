@@ -1,0 +1,11 @@
+{
+    "name": "Extension_Key",
+    "image": "images/vncore-min.png",
+    "auth": "VnCore",
+    "email": "support@vncore.net",
+    "link": "https://Vncore.net",
+    "configGroup": "Templates",
+    "configKey": "Extension_Key",
+    "version": "1.0",
+    "vncoreVersion": "1.0"
+}
