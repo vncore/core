@@ -148,5 +148,25 @@ Overwrite vncore controller files
 
 >Step 2: Change `namespace Vncore\Core\Admin\Controllers` to `namespace App\Vncore\Admin\Controllers`
 
-## Quickly disable Vncore and plugins
-Just add the variable `VNCORE_ACTIVE=0` to the `.env` file
+## Add route
+
+Use prefix and middleware constants `VNCORE_ADMIN_PREFIX`, `VNCORE_ADMIN_MIDDLEWARE` in route declaration.
+
+References: https://github.com/vncore/core/blob/master/src/Admin/routes.php
+
+
+
+## Environment variables in .env file
+
+**Quickly disable Vncore and plugins**
+> `VNCORE_ACTIVE=1` // To disable, set value 0
+
+**Disable APIs**
+> `VNCORE_API_MODE=1` // To disable, set value 0
+
+**Data table prefixes**
+> `VNCORE_DB_PREFIX=vncore_` //Cannot change after install vncore
+
+**Path prefix to admin**
+> `VNCORE_ADMIN_PREFIX=vncore_admin`
+
