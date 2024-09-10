@@ -252,7 +252,7 @@ class PermissionController extends RootAdminController
             $ids = request('ids');
             $arrID = explode(',', $ids);
             AdminPermission::destroy($arrID);
-            return response()->json(['error' => 0, 'msg' => '']);
+            return response()->json(['error' => 0, 'msg' => vncore_language_render('action.update_success')]);
         }
     }
 

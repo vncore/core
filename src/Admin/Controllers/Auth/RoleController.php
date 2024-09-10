@@ -256,7 +256,7 @@ class RoleController extends RootAdminController
             $arrID = explode(',', $ids);
             $arrID = array_diff($arrID, VNCORE_GUARD_ROLES);
             AdminRole::destroy($arrID);
-            return response()->json(['error' => 0, 'msg' => '']);
+            return response()->json(['error' => 0, 'msg' => vncore_language_render('action.update_success')]);
         }
     }
 }

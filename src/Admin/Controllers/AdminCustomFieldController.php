@@ -221,7 +221,7 @@ class AdminCustomFieldController extends RootAdminController
             $ids = request('ids');
             $arrID = explode(',', $ids);
             AdminCustomField::destroy($arrID);
-            return response()->json(['error' => 0, 'msg' => '']);
+            return response()->json(['error' => 0, 'msg' => vncore_language_render('action.update_success')]);
         }
     }
 
