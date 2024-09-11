@@ -48,7 +48,7 @@
         <div class="tab-content" id="custom-tabs-four-tabContent">
           <div class="table-responsive">
           <table class="table table-hover text-nowrap table-bordered">
-            <thead class="thead-light">
+            <thead class="thead-light text-nowrap">
               <tr>
                 <th>{{ vncore_language_render('admin.extension.image') }}</th>
                 <th>{{ vncore_language_render('admin.extension.code') }}</th>

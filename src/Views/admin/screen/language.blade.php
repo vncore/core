@@ -175,7 +175,7 @@
             <section id="pjax-container" class="table-list">
               <div class="box-body table-responsivep-0" >
                  <table class="table table-hover box-body text-wrap table-bordered">
-                    <thead class="thead-light">
+                    <thead class="thead-light text-nowrap">
                        <tr>
                         @if (!empty($removeList))
                         <th></th>

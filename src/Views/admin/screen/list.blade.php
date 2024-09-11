@@ -107,7 +107,7 @@
       <div class="card-body p-0" id="pjax-container">
         <div class="table-responsive">
         <table class="table table-hover box-body text-wrap table-bordered">
-          <thead class="thead-light">
+          <thead class="thead-light text-nowrap">
             <tr>
               @if (!empty($removeList))
               <th></th>

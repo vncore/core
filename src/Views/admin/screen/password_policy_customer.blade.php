@@ -2,7 +2,7 @@
 
   <div class="card-body table-responsivep-0">
    <table class="table table-hover box-body text-wrap table-bordered">
-     <thead class="thead-light">
+     <thead class="thead-light text-nowrap">
        <tr>
          <th>{{ vncore_language_render('customer.admin.field') }}</th>
          <th>{{ vncore_language_render('customer.admin.value') }}</th>

@@ -50,7 +50,7 @@
                   </form>
 
                   <table class="table table-hover box-body text-wrap table-bordered">
-                      <thead class="thead-light">
+                      <thead class="thead-light text-nowrap">
                          <tr>
                            <th>{{ vncore_language_render('admin.language_manager.position') }}</th>
                            <th>{{ vncore_language_render('admin.language_manager.code') }}</th>
