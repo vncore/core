@@ -19,7 +19,7 @@ class LogOperation
     {
         if ($this->shouldLogOperation($request)) {
             $log = [
-                'user_id' => auth('admin')->user()->id,
+                'user_id' => admin()->user()->id,
                 'path' => substr($request->path(), 0, 255),
                 'method' => $request->method(),
                 'ip' => $request->getClientIp(),
@@ -46,7 +46,7 @@ class LogOperation
     {
         return config('vncore-config.admin.admin_log')
         && !$this->inExceptArray($request)
-        && auth('admin')->user();
+        && admin()->user();
     }
 
     /**

@@ -12,7 +12,7 @@ if (!function_exists('vncore_admin_can_config')) {
      */
     function vncore_admin_can_config()
     {
-        return auth('admin')->user()->checkPermissionConfig();
+        return admin()->user()->checkPermissionConfig();
     }
 }
 

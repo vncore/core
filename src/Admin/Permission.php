@@ -25,7 +25,7 @@ class Permission
             return;
         }
 
-        if (auth('admin')->user()->cannot($permission)) {
+        if (admin()->user()->cannot($permission)) {
             return static::error();
         }
     }
@@ -37,7 +37,7 @@ class Permission
      */
     public static function isAdministrator()
     {
-        return auth('admin')->user()->isRole('administrator');
+        return admin()->user()->isRole('administrator');
     }
 
     public static function error()

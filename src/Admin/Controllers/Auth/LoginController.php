@@ -48,7 +48,7 @@ class LoginController extends RootAdminController
 
         if ($this->guard()->attempt($credentials, $remember)) {
             if (function_exists('vncore_event_admin_login')) {
-                vncore_event_admin_login(auth('admin')->user());
+                vncore_event_admin_login(admin()->user());
             }
             return $this->sendLoginResponse($request);
         }
@@ -88,7 +88,7 @@ class LoginController extends RootAdminController
 
     public function getSetting()
     {
-        $user = auth('admin')->user();
+        $user = admin()->user();
         if ($user === null) {
             return vncore_language_render('admin.data_not_found_detail');
         }
@@ -107,7 +107,7 @@ class LoginController extends RootAdminController
 
     public function putSetting()
     {
-        $user = auth('admin')->user();
+        $user = admin()->user();
         $data = request()->all();
         $dataOrigin = request()->all();
         $validator = Validator::make($dataOrigin, [

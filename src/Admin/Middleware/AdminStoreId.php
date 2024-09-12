@@ -3,7 +3,6 @@
 namespace Vncore\Core\Admin\Middleware;
 
 use Closure;
-use Session;
 
 class AdminStoreId
 {
@@ -16,7 +15,7 @@ class AdminStoreId
      */
     public function handle($request, Closure $next)
     {
-        if (auth('admin')->user()) {
+        if (admin()->user()) {
             session(['adminStoreId' => VNCORE_ID_ROOT]);
         } else {
             session()->forget('adminStoreId');

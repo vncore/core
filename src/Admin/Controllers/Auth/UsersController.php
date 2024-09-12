@@ -79,7 +79,7 @@ class UsersController extends RootAdminController
             $arrAction = [
                 '<a href="' . vncore_route_admin('admin_user.edit', ['id' => $row['id'], 'page' => request('page')]) . '"  class="dropdown-item"><i class="fa fa-edit"></i> '.vncore_language_render('action.edit').'</a>',
                 ];
-            if (auth('admin')->user()->id == $row['id'] || in_array($row['id'], VNCORE_GUARD_ADMIN)) {
+            if (admin()->user()->id == $row['id'] || in_array($row['id'], VNCORE_GUARD_ADMIN)) {
                 //
             } else {
                 $arrAction[] = '<a href="#" onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="dropdown-item"><i class="fas fa-trash-alt"></i> '.vncore_language_render('action.remove').'</a>';

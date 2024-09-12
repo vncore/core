@@ -79,8 +79,8 @@
               @endif
               <li class="breadcrumb-item active">{!! $title??'' !!}</li>
             </ol>
-            @elseif (auth('admin')->user()->checkUrlAllowAccess(url()->current()))
-              @if (auth('admin')->user()->checkUrlAllowAccess(vncore_route_admin('admin_home_config.index')))
+            @elseif (admin()->user()->checkUrlAllowAccess(url()->current()))
+              @if (admin()->user()->checkUrlAllowAccess(vncore_route_admin('admin_home_config.index')))
               <ol class="breadcrumb float-sm-right">
                 <a href="{{ vncore_route_admin('admin_home_config.index') }}" class="btn btn-sm  btn-warning  btn-flat" title="{{ vncore_language_render('action.edit') }}">
                   <i class="fa fa-edit"></i>

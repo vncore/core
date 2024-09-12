@@ -16,7 +16,7 @@ if (!function_exists('vncore_notice_add')) {
             case 'Plugin':
             case 'Template':
             case 'Admin':
-                $admin_created = auth('admin')->user()->id;
+                $admin_created = admin()->user()->id;
                 break;
             default:
                 $admin_created = '';
