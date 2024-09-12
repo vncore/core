@@ -18,6 +18,7 @@ use Vncore\Core\Api\Middleware\ApiConnection;
 use Vncore\Core\Api\Middleware\ForceJsonResponse;
 use Vncore\Core\Admin\Middleware\Authenticate;
 use Vncore\Core\Admin\Middleware\LogOperation;
+use Vncore\Core\Admin\Middleware\Session;
 use Vncore\Core\Admin\Middleware\PermissionMiddleware;
 use Vncore\Core\Admin\Middleware\AdminStoreId;
 use Spatie\Pjax\Middleware\FilterIfPjax;
@@ -365,6 +366,7 @@ class VncoreServiceProvider extends ServiceProvider
         'admin.permission' => PermissionMiddleware::class,
         'admin.storeId'    => AdminStoreId::class,
         'admin.pjax'      => FilterIfPjax::class,
+        'admin.session'    => Session::class,
         //Sanctum
         'abilities'        => \Laravel\Sanctum\Http\Middleware\CheckAbilities::class,
         'ability'          => \Laravel\Sanctum\Http\Middleware\CheckForAnyAbility::class,

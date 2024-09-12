@@ -44,6 +44,7 @@ return [
                 4        => 'admin.log',
                 5        => 'admin.storeId',
                 6        => 'localization',
+                6        => 'admin.session',
             ],
             'api_extend' => [
                 1        => 'json.response',
