@@ -82,7 +82,7 @@ return new class extends Migration
         });
 
         $schema->create(VNCORE_DB_PREFIX . 'admin_log', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->uuid('user_id');
             $table->string('path');
             $table->string('method', 10);
