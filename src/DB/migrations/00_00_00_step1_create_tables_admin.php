@@ -158,7 +158,6 @@ return new class extends Migration
             $table->string('type_id', 36)->index()->nullable()->comment('ID of order, customer, plugin...');
             $table->integer('status')->default(0)->index()->comment('O: new, 1: read');
             $table->string('admin_id', 36)->index()->nullable()->comment('Id of admin get notice');
-            $table->string('partner_member_id', 36)->nullable()->index()->comment('Id of member partner get notice. Ex: Pmo partner, multi-vendor,...');
             $table->string('admin_created', 36)->comment('Admin created notice');
             $table->text('content');
             $table->timestamps();

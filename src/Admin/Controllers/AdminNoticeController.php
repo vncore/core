@@ -59,16 +59,8 @@ class AdminNoticeController extends RootAdminController
      */
     public function markRead() {
 
-        if (session('partner_member_id')) {
-            (new AdminNotice)->where('admin_id', admin()->user()->id)
-                ->orWhere('partner_member_id', session('partner_member_id'))
-                ->update(['status' => 1]);
-
-        } else {
-            (new AdminNotice)->where('admin_id', admin()->user()->id)
-            ->update(['status' => 1]);
-
-        }
+        (new AdminNotice)->where('admin_id', admin()->user()->id)
+        ->update(['status' => 1]);
         return redirect()->back();
     }
 

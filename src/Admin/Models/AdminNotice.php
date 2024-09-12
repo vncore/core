@@ -21,19 +21,9 @@ class AdminNotice extends Model
      */
     public static function getCountNoticeNew()
     {
-
-        if (session('partner_member_id')) {
-            $data = self::where('status', 0)
-            ->where(function ($query){
-                $query->where('admin_id', admin()->user()->id)
-                      ->orWhere('partner_member_id', session('partner_member_id'));
-            })
-            ->count();
-        } else {
-            $data = self::where('status', 0)
-            ->where('admin_id', admin()->user()->id)
-            ->count();
-        }
+        $data = self::where('status', 0)
+        ->where('admin_id', admin()->user()->id)
+        ->count();
         return $data;
     }
 
@@ -44,12 +34,7 @@ class AdminNotice extends Model
      */
     public static function getTopNotice()
     {
-        if (session('partner_member_id')) {
-            $data = self::where('admin_id', admin()->user()->id)
-            ->orWhere('partner_member_id', session('partner_member_id'));
-        } else {
-            $data = self::where('admin_id', admin()->user()->id);
-        }
+        $data = self::where('admin_id', admin()->user()->id);
         $data = $data->limit(10)
             ->orderBy('id','desc')
             ->get();
@@ -65,12 +50,7 @@ class AdminNotice extends Model
      */
     public function getNoticeListAdmin()
     {
-        if (session('partner_member_id')) {
-            $data = self::where('admin_id', admin()->user()->id)
-            ->orWhere('partner_member_id', session('partner_member_id'));
-        } else {
-            $data = self::where('admin_id', admin()->user()->id);
-        }
+        $data = self::where('admin_id', admin()->user()->id);
         $data = $data
             ->with('admin')
             ->orderBy('id','desc')
