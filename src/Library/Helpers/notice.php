@@ -3,10 +3,13 @@ if (!function_exists('vncore_notice_add')) {
     /**
      * [vncore_notice_add description]
      *
-     * @param   string  $type    [$type description]
-     * @param   string  $typeId  [$typeId description]
+     * @param   string  $type     [$type description]
+     * @param   string  $typeId   [$typeId description]
+     * @param   string  $content  [$content description]
+     * @param   [type]  $adminId  [$adminId description]
+     * @param   [type]  $creator  [$creator description]
      *
-     * @return  [type]           [return description]
+     * @return  [type]            [return description]
      */
     function vncore_notice_add(string $type, string $typeId = '', string $content = '', $adminId = null, $creator = null)
     {
