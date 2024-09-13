@@ -61,7 +61,7 @@ class AdminHomeConfigController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['listView'] = config('vncore-module.homepage');
+        $data['listView'] = collect(config('vncore-module.homepage'))->pluck('view')->toArray();
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vncore_templatePathAdmin.'component.pagination');
         $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
@@ -160,7 +160,7 @@ class AdminHomeConfigController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['listView'] = config('vncore-module.homepage');
+        $data['listView'] = collect(config('vncore-module.homepage'))->pluck('view')->toArray();
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vncore_templatePathAdmin.'component.pagination');
         $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 

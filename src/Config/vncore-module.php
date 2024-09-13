@@ -3,19 +3,19 @@ return [
 
     // Module display in left header admin
     'module_header_left' => [
-        'vncore-admin::component.language', // path to view
-        'vncore-admin::component.admin_theme', // path to view
+        ['view' => 'vncore-admin::component.language', 'sort' => 100], // path to view
+        ['view' => 'vncore-admin::component.admin_theme', 'sort' => 200], // path to view
     ],
 
     // Module display in right header admin
     'module_header_right' => [
-        'vncore-admin::component.notice',
-        'vncore-admin::component.admin_profile',
+        ['view' => 'vncore-admin::component.notice', 'sort' => 100], // path to view
+        ['view' => 'vncore-admin::component.admin_profile', 'sort' => 200], // path to view
     ],
 
     //List block to homepage
     'homepage' => [
-        'vncore-admin::component.home_default',
-        'vncore-admin::component.home_footer',
+        ['view' => 'vncore-admin::component.home_default', 'sort' => 100], // path to view
+        ['view' => 'vncore-admin::component.home_footer', 'sort' => 200], // path to view
     ],
 ];

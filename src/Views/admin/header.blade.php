@@ -8,7 +8,7 @@
       
       @if (is_array(config('vncore-module.module_header_left')))
         @foreach (config('vncore-module.module_header_left') as $module)
-          @includeIf($module)
+          @includeIf($module['view'] ?? '')
         @endforeach
       @endif
 
@@ -22,7 +22,7 @@
 
       @if (is_array(config('vncore-module.module_header_right')))
         @foreach (config('vncore-module.module_header_right') as $module)
-          @includeIf($module)
+        @includeIf($module['view'] ?? '')
         @endforeach
       @endif
 

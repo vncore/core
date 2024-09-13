@@ -365,9 +365,16 @@ if (!function_exists('vncore_config_global_update') && !in_array('vncore_config_
 if (!function_exists('vncore_add_module') && !in_array('vncore_add_module', config('vncore_functions_except', []))) {
 
     
-    function vncore_add_module(string $position, string $pathToView) {
+    function vncore_add_module(string $position, string $view, $sort = 0) {
         $positions = config('vncore-module.'.$position) ?? [];
-        $positions[] = $pathToView;
+        $positions[] = [
+            'view' => $view,
+            'sort' => $sort
+        ];
+        //Sort by sort
+        usort($positions, function($a, $b) {
+            return $a['sort'] <=> $b['sort'];
+        });
         config(['vncore-module.'.$position => $positions]);
     }
 }
