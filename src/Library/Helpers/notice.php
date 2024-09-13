@@ -8,19 +8,18 @@ if (!function_exists('vncore_notice_add')) {
      *
      * @return  [type]           [return description]
      */
-    function vncore_notice_add(string $type, string $typeId = '', $content = '')
+    function vncore_notice_add(string $type, string $typeId = '', string $content = '', $adminId = null, $creator = null)
     {
         $modelNotice = new Vncore\Core\Admin\Models\AdminNotice;
-        $listAdmin = vncore_notice_get_admin($type);
-        switch ($type) {
-            case 'Plugin':
-            case 'Template':
-            case 'Admin':
-                $admin_created = admin()->user()->id;
-                break;
-            default:
-                $admin_created = '';
-                break;
+        if ($adminId) {
+            $listAdmin = is_array($adminId)? $adminId: [$adminId];
+        } else {
+            $listAdmin = vncore_notice_get_admin($type);
+        }
+        if ($creator) {
+            $admin_created = $creator;
+        } else {
+            $admin_created = admin()->user()->id;
         }
         if (count($listAdmin)) {
             foreach ($listAdmin as $key => $admin) {
@@ -44,15 +43,15 @@ if (!function_exists('vncore_notice_add')) {
     if (!function_exists('vncore_notice_get_admin')) {
         function vncore_notice_get_admin(string $type = "")
         {
-            if (function_exists('vncore_notice_pro_get_admin')) {
-                return vncore_notice_pro_get_admin($type);
+            if (function_exists('vncore_notice_custom_get_admin')) {
+                return vncore_notice_custom_get_admin($type);
             }
 
             return (new \Vncore\Core\Admin\Models\AdminUser)
             ->selectRaw('distinct '. VNCORE_DB_PREFIX.'admin_user.id')
             ->join(VNCORE_DB_PREFIX . 'admin_role_user', VNCORE_DB_PREFIX . 'admin_role_user.user_id', VNCORE_DB_PREFIX . 'admin_user.id')
             ->join(VNCORE_DB_PREFIX . 'admin_role', VNCORE_DB_PREFIX . 'admin_role.id', VNCORE_DB_PREFIX . 'admin_role_user.role_id')
-            ->whereIn(VNCORE_DB_PREFIX . 'admin_role.slug', ['administrator','view.all', 'manager'])
+            ->whereIn(VNCORE_DB_PREFIX . 'admin_role.slug', ['administrator','view.all'])
             ->pluck('id')
             ->toArray();
         }
