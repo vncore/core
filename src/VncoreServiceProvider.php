@@ -26,14 +26,6 @@ use Spatie\Pjax\Middleware\FilterIfPjax;
 use Vncore\Core\Admin\Models\PersonalAccessToken;
 use Vncore\Core\Admin\Models\AdminStore;
 
-use \Vncore\Core\Admin\Events\EventAdminLogin;
-use \Vncore\Core\Admin\Events\EventAdminCreated;
-use \Vncore\Core\Admin\Events\EventAdminDeleting;
-
-use Vncore\Core\Admin\Listeners\ListenAdminCreated;
-use Vncore\Core\Admin\Listeners\ListenAdminDeleting;
-use Vncore\Core\Admin\Listeners\ListenAdminLogin;
-
 class VncoreServiceProvider extends ServiceProvider
 {
     protected $listCommand = [
@@ -102,7 +94,7 @@ class VncoreServiceProvider extends ServiceProvider
 
         $this->initial();
 
-        if (VNCORE_ACTIVE == 1 && file_exists(storage_path() . "/app/vncore-installed.txt")) {
+        if (VNCORE_ACTIVE == 1 && \Illuminate\Support\Facades\Storage::disk('local')->exists('vncore-installed.txt')) {
 
             //If env is production, then disable debug mode
             if (config('app.env') === 'production') {

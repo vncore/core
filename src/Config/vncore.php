@@ -1,7 +1,7 @@
 <?php
 return [
     'core'                 => '1.0',
-    'core-sub-version'     => '1.0.3',
+    'core-sub-version'     => '1.0.4',
     'homepage'             => 'https://vncore.net',
     'name'                 => 'Core laravel admin for all systems',
     'github'               => 'https://github.com/vncore/core',

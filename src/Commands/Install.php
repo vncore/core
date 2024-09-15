@@ -114,9 +114,9 @@ class Install extends Command
 
     private function checkVncoreInstalled()
     {
-        if (file_exists(storage_path() . "/app/vncore-installed.txt")) {
+        if (\Illuminate\Support\Facades\Storage::disk('local')->exists('vncore-installed.txt')) {
             $this->error("Vncore has been installed");
-            $this->fail("If you want to reinstall, please delete the file vncore-installed.txt in the storage/app folder");
+            $this->fail("If you want to reinstall, please delete the file vncore-installed.txt in the ".\Illuminate\Support\Facades\Storage::disk('local')->path('vncore-installed.txt'));
             return false;
         }
         return true;
