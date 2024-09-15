@@ -1,7 +1,4 @@
 <?php
-use \Vncore\Core\Admin\Events\EventAdminLogin;
-use \Vncore\Core\Admin\Events\EventAdminCreated;
-use \Vncore\Core\Admin\Events\EventAdminDeleting;
 if (!function_exists('vncore_event_admin_login') && !in_array('vncore_event_admin_login', config('vncore_functions_except', []))) {
     /**
      * [vncore_event_admin_login description]
@@ -12,7 +9,9 @@ if (!function_exists('vncore_event_admin_login') && !in_array('vncore_event_admi
      */
     function vncore_event_admin_login(\Vncore\Core\Admin\Models\AdminUser $user)
     {
-        EventAdminLogin::dispatch($user);
+        if (function_exists('partner_event_admin_login')) {
+            partner_event_admin_login($user);
+        }
     }
 }
 if (!function_exists('vncore_event_admin_created') && !in_array('vncore_event_admin_created', config('vncore_functions_except', []))) {
@@ -25,7 +24,10 @@ if (!function_exists('vncore_event_admin_created') && !in_array('vncore_event_ad
      */
     function vncore_event_admin_created(\Vncore\Core\Admin\Models\AdminUser $user)
     {
-        EventAdminCreated::dispatch($user);
+        if (function_exists('partner_event_admin_add')) {
+            partner_event_admin_add($user);
+        }
+        vncore_notice_add(type: 'Admin', typeId: $user->id, content:'admin_notice.vncore_new_admin_add');
     }
 }
 if (!function_exists('vncore_event_admin_deleting') && !in_array('vncore_event_admin_deleting', config('vncore_functions_except', []))) {
@@ -38,6 +40,9 @@ if (!function_exists('vncore_event_admin_deleting') && !in_array('vncore_event_a
      */
     function vncore_event_admin_deleting(\Vncore\Core\Admin\Models\AdminUser $user)
     {
-        EventAdminDeleting::dispatch($user);
+        if (function_exists('partner_event_admin_delete')) {
+            partner_event_admin_delete($user);
+        }
+        vncore_notice_add(type: 'Admin', typeId: $user->id, content:'admin_notice.vncore_new_admin_delete');
     }
 }

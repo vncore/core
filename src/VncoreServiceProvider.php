@@ -434,12 +434,6 @@ class VncoreServiceProvider extends ServiceProvider
     //Event register
     protected function eventRegister()
     {
-        Event::subscribe(ListenAdminCreated::class);
-        Event::subscribe(ListenAdminDeleting::class);
-        Event::subscribe(ListenAdminLogin::class);
-
-        // Event::listen(EventAdminCreated::class, ListenAdminCreated::class);
-        // Event::listen(EventAdminDeleting::class, ListenAdminDeleting::class);
-        // Event::listen(EventAdminLogin::class, ListenAdminLogin::class);
+        //
     }
 }
