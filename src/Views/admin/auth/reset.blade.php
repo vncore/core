@@ -6,7 +6,7 @@
   <div class="wrap-login100 main-login">
 
       <div class="card-header text-center">
-        <a href="{{ vncore_route('home') }}" class="h1">
+        <a href="{{ vncore_route_admin('home') }}" class="h1">
           <img src="{{ vncore_file(vncore_store('logo')) }}" alt="logo" class="logo">
         </a>
       </div>
@@ -14,7 +14,7 @@
         <a><b>{{vncore_language_render('admin.password_forgot')}}</b></a>
       </div>
       <div class="card-body">
-      <form action="{{ vncore_route('admin.password_request') }}" method="post">
+      <form action="{{ vncore_route_admin('admin.password_request') }}" method="post">
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="token" value="{{ $token }}">
@@ -77,7 +77,7 @@
         </div>
       </form>
       <p class="mt-3 mb-1">
-      <a href="{{ vncore_route('admin.login') }}"><b>{{ vncore_language_render('admin.user.login') }}</b></a>
+      <a href="{{ vncore_route_admin('admin.login') }}"><b>{{ vncore_language_render('admin.user.login') }}</b></a>
       </p>
       </div>
   </div>

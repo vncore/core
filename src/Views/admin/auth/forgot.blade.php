@@ -6,7 +6,7 @@
       <div class="wrap-login100 main-login">
 
           <div class="card-header text-center">
-            <a href="{{ vncore_route('home') }}" class="h1">
+            <a href="{{ vncore_route_admin('home') }}" class="h1">
               <img src="{{ vncore_file(vncore_store('logo')) }}" alt="logo" class="logo">
             </a>
           </div>
@@ -44,7 +44,7 @@
             </div>
           </form>
           <p class="mt-3 mb-1">
-          <a href="{{ vncore_route('admin.login') }}"><b>{{ vncore_language_render('admin.user.login') }}</b></a>
+          <a href="{{ vncore_route_admin('admin.login') }}"><b>{{ vncore_language_render('admin.user.login') }}</b></a>
           </p>
           @if (session('status'))
               <p style="color:green">{{ session('status') }}</p>

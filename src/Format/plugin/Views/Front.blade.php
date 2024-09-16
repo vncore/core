@@ -7,7 +7,7 @@
 @section('breadcrumb')
     <div class="breadcrumbs">
         <ol class="breadcrumb">
-          <li><a href="{{ vncore_route('home') }}">{{ vncore_language_render('front.home') }}</a></li>
+          <li><a href="{{ route('home') }}">{{ vncore_language_render('front.home') }}</a></li>
           <li class="active">{{ $title ?? '' }}</li>
         </ol>
       </div>

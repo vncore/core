@@ -46,11 +46,11 @@ class AdminStoreInfoController extends RootAdminController
                 } elseif ($name == 'domain') {
                     if (
                         $storeId == VNCORE_ID_ROOT 
-                        || ((vncore_check_multi_vendor_installed()) && vncore_store_is_partner($storeId)) 
-                        || vncore_check_multi_store_installed()
+                        || ((vncore_store_check_multi_vendor_installed()) && vncore_store_is_partner($storeId)) 
+                        || vncore_store_check_multi_store_installed()
                     ) {
                         // Only store root can edit domain
-                        $domain = vncore_process_domain_store($value);
+                        $domain = vncore_store_process_domain($value);
                         if (AdminStore::where('domain', $domain)->where('id', '<>', $storeId)->first()) {
                             $error = 1;
                             $msg = vncore_language_render('store.admin.domain_exist');

@@ -57,11 +57,20 @@ if (!function_exists('vncore_url_render') && !in_array('vncore_url_render', conf
                     return vncore_route_admin($arrRoute[1]);
                 }
             } else {
-                if (isset($arrRoute[2])) {
-                    return vncore_route($arrRoute[1], explode(',', $arrRoute[2]));
+                if (function_exists('vncore_route_front')) {
+                    if (isset($arrRoute[2])) {
+                        return vncore_route_front($arrRoute[1], explode(',', $arrRoute[2]));
+                    } else {
+                        return vncore_route_front($arrRoute[1]);
+                    }
                 } else {
-                    return vncore_route($arrRoute[1]);
+                    if (isset($arrRoute[2])) {
+                        return route($arrRoute[1], explode(',', $arrRoute[2]));
+                    } else {
+                        return route($arrRoute[1]);
+                    }
                 }
+
             }
         }
 

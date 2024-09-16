@@ -35,10 +35,6 @@ class VncoreServiceProvider extends ServiceProvider
         Customize::class,
     ];
     
-    protected $install = [
-        Install::class,
-    ];
-
     protected function initial()
     {
         $this->loadTranslationsFrom(__DIR__.'/Lang', 'vncore');
@@ -75,7 +71,9 @@ class VncoreServiceProvider extends ServiceProvider
 
         //Load command initial
         try {
-            $this->commands($this->install);
+            $this->commands([
+                Install::class,
+            ]);
         } catch (\Throwable $e) {
             $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
             echo $msg;
@@ -286,8 +284,8 @@ class VncoreServiceProvider extends ServiceProvider
         $storeId = VNCORE_ID_ROOT;
 
         //Process for multi store
-        if (vncore_check_multi_domain_installed()) {
-            $domain = vncore_process_domain_store(url('/'));
+        if (vncore_store_check_multi_domain_installed()) {
+            $domain = vncore_store_process_domain(url('/'));
             $arrDomain = AdminStore::getDomainStore();
             if (in_array($domain, $arrDomain)) {
                 $storeId =  array_search($domain, $arrDomain);
@@ -308,7 +306,7 @@ class VncoreServiceProvider extends ServiceProvider
         //Config for  email
         if (
             // Default use smtp mode for for supplier if use multi-store
-            ($storeId != VNCORE_ID_ROOT && vncore_check_multi_domain_installed())
+            ($storeId != VNCORE_ID_ROOT && vncore_store_check_multi_domain_installed())
             ||
             // Use smtp config from admin if root domain have smtp_mode enable
             ($storeId == VNCORE_ID_ROOT && vncore_config_global('smtp_mode'))

@@ -173,44 +173,6 @@ if (!function_exists('vncore_store_active') && !in_array('vncore_store_active', 
 
 
 
-if (!function_exists('vncore_route') && !in_array('vncore_route', config('vncore_functions_except', []))) {
-    /**
-     * Render route
-     *
-     * @param   [string]  $name
-     * @param   [array]  $param
-     *
-     * @return  [type]         [return description]
-     */
-    function vncore_route($name, $param = [])
-    {
-        if (!config('vncore-config.route.VNCORE_SEO_LANG')) {
-            $param = Arr::except($param, ['lang']);
-        } else {
-            $arrRouteExcludeLanguage = ['home','locale', 'banner.click'];
-            if (!key_exists('lang', $param) && !in_array($name, $arrRouteExcludeLanguage)) {
-                $param['lang'] = app()->getLocale();
-            }
-        }
-        
-        if (Route::has($name)) {
-            try {
-                $route = route($name, $param);
-            } catch (\Throwable $th) {
-                $route = url('#'.$name.'#'.implode(',', $param));
-            }
-            return $route;
-        } else {
-            if ($name == 'home') {
-                return url('/');
-            } else {
-                return url('#'.$name);
-            }
-        }
-    }
-}
-
-
 if (!function_exists('vncore_route_admin') && !in_array('vncore_route_admin', config('vncore_functions_except', []))) {
     /**
      * Render route admin

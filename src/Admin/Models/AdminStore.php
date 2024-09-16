@@ -3,7 +3,6 @@ namespace Vncore\Core\Admin\Models;
 
 use Vncore\Core\Admin\Models\AdminStoreDescription;
 use Vncore\Core\Admin\Models\AdminConfig;
-use Vncore\Core\Admin\Models\ShopProductStore;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -29,42 +28,6 @@ class AdminStore extends Model
     {
         return $this->hasMany(AdminStoreDescription::class, 'store_id', 'id');
     }
-
-    public function products()
-    {
-        return $this->belongsToMany(AdminStore::class, ShopProductStore::class, 'store_id', 'product_id');
-    }
-
-    public function categories()
-    {
-        return $this->belongsToMany(AdminStore::class, ShopCategoryStore::class, 'store_id', 'category_id');
-    }
-
-    public function banners()
-    {
-        return $this->belongsToMany(AdminStore::class, ShopBannerStore::class, 'store_id', 'banner_id');
-    }
-
-    public function brands()
-    {
-        return $this->belongsToMany(AdminStore::class, ShopBrandStore::class, 'store_id', 'brand_id');
-    }
-
-    public function news()
-    {
-        return $this->belongsToMany(AdminStore::class, ShopNewsStore::class, 'store_id', 'news_id');
-    }
-
-    public function pages()
-    {
-        return $this->belongsToMany(AdminStore::class, ShopPageStore::class, 'store_id', 'page_id');
-    }
-
-    public function links()
-    {
-        return $this->belongsToMany(AdminStore::class, ShopLinkStore::class, 'store_id', 'link_id');
-    }
-
     protected static function boot()
     {
         parent::boot();
@@ -76,12 +39,6 @@ class AdminStore extends Model
             }
             //Delete store descrition
             $store->descriptions()->delete();
-            $store->news()->detach();
-            $store->banners()->detach();
-            $store->brands()->detach();
-            $store->pages()->detach();
-            $store->products()->detach();
-            $store->categories()->detach();
             $store->links()->detach();
             AdminConfig::where('store_id', $store->id)->delete();
         });

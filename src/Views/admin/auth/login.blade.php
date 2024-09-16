@@ -5,7 +5,7 @@
     <div class="container-login100">
       <div class="wrap-login100 main-login">
         <div class="card-header text-center">
-          <a href="{{ vncore_route('home') }}" class="h1">
+          <a href="{{ vncore_route_admin('home') }}" class="h1">
             <img src="{{ vncore_file(vncore_store('logo')) }}" alt="logo" class="logo">
           </a>
         </div>
