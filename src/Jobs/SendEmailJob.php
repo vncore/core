@@ -36,6 +36,6 @@ class SendEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        vncore_process_send_mail($this->view, $this->dataView, $this->emailConfig, $this->attach);
+        vncore_mail_process_send($this->view, $this->dataView, $this->emailConfig, $this->attach);
     }
 }

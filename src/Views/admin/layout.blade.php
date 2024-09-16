@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="{{ vncore_file(vncore_store('icon')) }}" type="image/png" sizes="16x16">
+  <link rel="icon" href="{{ vncore_file(vncore_store_info('icon')) }}" type="image/png" sizes="16x16">
   <title>{{vncore_config_admin('ADMIN_TITLE')}} | {{ $title??'' }}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">

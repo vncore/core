@@ -100,7 +100,7 @@ trait ExtensionOnlineController
         return view($this->vncore_templatePathAdmin.'screen.extension_online')->with(
             [
                     "title"              => $title,
-                    "arrExtensionsLocal" => vncore_get_all_extension_local(type: $this->type),
+                    "arrExtensionsLocal" => vncore_extension_get_all_local(type: $this->type),
                     "arrExtensions"      => $arrExtensions,
                     "filter_keyword"     => $filter_keyword ?? '',
                     "filter_type"        => $filter_type ?? '',
@@ -159,7 +159,7 @@ trait ExtensionOnlineController
                     File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName.'/public'), public_path($appPath));
                     File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName), app_path($appPath));
                     File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                    $namespace = vncore_get_class_extension_config(type:$this->type, key:$key);
+                    $namespace = vncore_extension_get_class_config(type:$this->type, key:$key);
                     $response = (new $namespace)->install();
                 }
 

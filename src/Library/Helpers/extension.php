@@ -3,7 +3,7 @@ use Vncore\Core\Admin\Models\AdminConfig;
 use Vncore\Core\Admin\Models\AdminHome;
 use Illuminate\Support\Facades\Artisan;
 
-if (!function_exists('vncore_get_all_extension_local') && !in_array('vncore_get_all_extension_local', config('vncore_functions_except', []))) {
+if (!function_exists('vncore_extension_get_all_local') && !in_array('vncore_extension_get_all_local', config('vncore_functions_except', []))) {
     /**
      * Get all extension local
      *
@@ -11,7 +11,7 @@ if (!function_exists('vncore_get_all_extension_local') && !in_array('vncore_get_
      *
      * @return  [array]
      */
-    function vncore_get_all_extension_local($type = 'Plugin')
+    function vncore_extension_get_all_local($type = 'Plugin')
     {
         if ($type == 'Template') {
             $typeTmp = 'Templates';
@@ -33,13 +33,13 @@ if (!function_exists('vncore_get_all_extension_local') && !in_array('vncore_get_
     }
 }
 
-if (!function_exists('vncore_get_extension_installed') && !in_array('vncore_get_extension_installed', config('vncore_functions_except', []))) {
+if (!function_exists('vncore_extension_get_installed') && !in_array('vncore_extension_get_installed', config('vncore_functions_except', []))) {
     /**
      * Get all class plugin
      *
      *
      */
-    function vncore_get_extension_installed($type = "Plugin", $active = true)
+    function vncore_extension_get_installed($type = "Plugin", $active = true)
     {
         switch ($type) {
             case 'Template':
@@ -59,12 +59,12 @@ if (!function_exists('vncore_get_extension_installed') && !in_array('vncore_get_
      *
      * @return  [array]
      */
-    if (!function_exists('vncore_get_class_extension_config') && !in_array('vncore_get_class_extension_config', config('vncore_functions_except', []))) {
-        function vncore_get_class_extension_config(string $type="Plugin", string $key = "")
+    if (!function_exists('vncore_extension_get_class_config') && !in_array('vncore_extension_get_class_config', config('vncore_functions_except', []))) {
+        function vncore_extension_get_class_config(string $type="Plugin", string $key = "")
         {
             $key = vncore_word_format_class($key);
 
-            $nameSpace = vncore_get_extension_namespace(type: $type, key:$key);
+            $nameSpace = vncore_extension_get_namespace(type: $type, key:$key);
             $nameSpace = $nameSpace . '\AppConfig';
 
             return $nameSpace;
@@ -79,8 +79,8 @@ if (!function_exists('vncore_get_extension_installed') && !in_array('vncore_get_
      *
      * @return  [array]
      */
-    if (!function_exists('vncore_get_extension_namespace') && !in_array('vncore_get_extension_namespace', config('vncore_functions_except', []))) {
-        function vncore_get_extension_namespace(string $type="Plugin", string $key = "")
+    if (!function_exists('vncore_extension_get_namespace') && !in_array('vncore_extension_get_namespace', config('vncore_functions_except', []))) {
+        function vncore_extension_get_namespace(string $type="Plugin", string $key = "")
         {
             $key = vncore_word_format_class($key);
             switch ($type) {

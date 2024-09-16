@@ -18,7 +18,7 @@ class AdminStoreConfigController extends RootAdminController
         foreach (timezone_identifiers_list() as $key => $value) {
             $timezones[$value] = $value;
         }
-        $this->templates = vncore_get_extension_installed(type: 'Template', active: true);
+        $this->templates = vncore_extension_get_installed(type: 'Template', active: true);
         $this->languages = AdminLanguage::getListActive();
         $this->timezones = $timezones;
     }
@@ -128,7 +128,7 @@ class AdminStoreConfigController extends RootAdminController
         $data['productConfigAttribute']         = $productConfigAttribute;
         $data['productConfigAttributeRequired'] = $productConfigAttributeRequired;
         $data['configLayout']                   = $configLayout;
-        $data['pluginCaptchaInstalled']         = vncore_get_plugin_captcha_installed();
+        $data['pluginCaptchaInstalled']         = vncore_captcha_get_plugin_installed();
         $data['configDisplay']                  = $configDisplay;
         $data['orderConfig']                    = $orderConfig;
         $data['configCaptcha']                  = $configCaptcha;

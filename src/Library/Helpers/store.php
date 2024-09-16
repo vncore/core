@@ -1,5 +1,7 @@
 <?php
 use Illuminate\Support\Str;
+use Vncore\Core\Admin\Models\AdminStore;
+
 /**
  * Get list store
  */
@@ -90,18 +92,17 @@ if (!function_exists('vncore_store_check_multi_domain_installed') && !in_array('
         vncore_config_global('MultiVendorPro') 
         || vncore_config_global('MultiVendor') 
         || vncore_config_global('MultiStorePro')
-        || vncore_config_global('MultiStore')
         || vncore_config_global('Pmo');
     }
 }
 
-if (!function_exists('vncore_store_check_multi_vendor_installed') && !in_array('vncore_store_check_multi_vendor_installed', config('vncore_functions_except', []))) {
+if (!function_exists('vncore_store_check_multi_partner_installed') && !in_array('vncore_store_check_multi_partner_installed', config('vncore_functions_except', []))) {
     /**
      * Check plugin multi vendor installed
      *
      * @return
      */
-        function vncore_store_check_multi_vendor_installed()
+        function vncore_store_check_multi_partner_installed()
         {
             return 
             vncore_config_global('MultiVendorPro') 
@@ -121,3 +122,70 @@ if (!function_exists('vncore_store_check_multi_store_installed') && !in_array('v
             return vncore_config_global('MultiStorePro');
         }
 }
+
+if (!function_exists('vncore_store_get_list_active') && !in_array('vncore_store_get_list_active', config('vncore_functions_except', []))) {
+    function vncore_store_get_list_active($field = null)
+    {
+        switch ($field) {
+            case 'code':
+                return AdminStore::getCodeActive();
+                break;
+
+            case 'domain':
+                return AdminStore::getStoreActive();
+                break;
+
+            default:
+                return AdminStore::getListAllActive();
+                break;
+        }
+    }
+}
+
+
+if (!function_exists('vncore_store_info') && !in_array('vncore_store_info', config('vncore_functions_except', []))) {
+    /**
+     * Get info store_id, table admin_store
+     *
+     * @param   [string] $key      [$key description]
+     * @param   [null|int]  $store_id    store id
+     *
+     * @return  [mix]
+     */
+    function vncore_store_info($key = null, $default = null, $store_id = null)
+    {
+        $store_id = ($store_id == null) ? config('app.storeId') : $store_id;
+
+        //Update store info
+        if (is_array($key)) {
+            if (count($key) == 1) {
+                foreach ($key as $k => $v) {
+                    return AdminStore::where('id', $store_id)->update([$k => $v]);
+                }
+            } else {
+                return false;
+            }
+        }
+        //End update
+
+        $allStoreInfo = [];
+        try {
+            $allStoreInfo = AdminStore::getListAll()[$store_id]->toArray() ?? [];
+        } catch (\Throwable $e) {
+            //
+        }
+
+        $lang = app()->getLocale();
+        $descriptions = $allStoreInfo['descriptions'] ?? [];
+        foreach ($descriptions as $row) {
+            if ($lang == $row['lang']) {
+                $allStoreInfo += $row;
+            }
+        }
+        if ($key == null) {
+            return $allStoreInfo;
+        }
+        return $allStoreInfo[$key] ?? $default;
+    }
+}
+

@@ -20,7 +20,7 @@ class Localization
         //Set language
         $languages = AdminLanguage::getListActive();
         if (!Session::has('locale')) {
-            $detectLocale = vncore_store('language') ?? config('app.locale');
+            $detectLocale = vncore_store_info('language') ?? config('app.locale');
         } else {
             $detectLocale = session('locale');
         }

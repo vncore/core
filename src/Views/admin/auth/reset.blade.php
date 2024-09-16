@@ -7,7 +7,7 @@
 
       <div class="card-header text-center">
         <a href="{{ vncore_route_admin('home') }}" class="h1">
-          <img src="{{ vncore_file(vncore_store('logo')) }}" alt="logo" class="logo">
+          <img src="{{ vncore_file(vncore_store_info('logo')) }}" alt="logo" class="logo">
         </a>
       </div>
       <div class="login-title-des col-md-12 p-b-41">

@@ -301,7 +301,7 @@ class VncoreServiceProvider extends ServiceProvider
         }
 
         //Title app
-        config(['app.name' => vncore_store('title')]);
+        config(['app.name' => vncore_store_info('title')]);
 
         //Config for  email
         if (
@@ -324,19 +324,19 @@ class VncoreServiceProvider extends ServiceProvider
             config(['mail.mailers.smtp.encryption' => $smtpSecurity]);
             config(['mail.mailers.smtp.username'   => $smtpUser]);
             config(['mail.mailers.smtp.password'   => $smtpPassword]);
-            config(['mail.from.address'            => ($smtpFrom ?? vncore_store('email'))]);
-            config(['mail.from.name'               => ($smtpName ?? vncore_store('title'))]);
+            config(['mail.from.address'            => ($smtpFrom ?? vncore_store_info('email'))]);
+            config(['mail.from.name'               => ($smtpName ?? vncore_store_info('title'))]);
         } else {
             //Set default
-            config(['mail.from.address' => (config('mail.from.address')) ? config('mail.from.address') : vncore_store('email')]);
-            config(['mail.from.name'    => (config('mail.from.name')) ? config('mail.from.name') : vncore_store('title')]);
+            config(['mail.from.address' => (config('mail.from.address')) ? config('mail.from.address') : vncore_store_info('email')]);
+            config(['mail.from.name'    => (config('mail.from.name')) ? config('mail.from.name') : vncore_store_info('title')]);
         }
         //email
 
         //Share variable for view
         view()->share('vncore_languages', vncore_language_all());
-        view()->share('vncore_templatePath', 'Vncore.Templates.'.vncore_store('template'));
-        view()->share('vncore_templateFile', 'Vncore/Templates/'.vncore_store('template'));
+        view()->share('vncore_templatePath', 'Vncore.Templates.'.vncore_store_info('template'));
+        view()->share('vncore_templateFile', 'Vncore/Templates/'.vncore_store_info('template'));
         //
         view()->share('vncore_templatePathAdmin', config('vncore-config.admin.path_view').'::');
     }

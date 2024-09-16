@@ -4,7 +4,7 @@
 
 <div class="page-content container">
     <div class="page-header text-blue-d2">
-      <img src="{{ vncore_file(vncore_store('logo')) }}" style="max-height:60px;">
+      <img src="{{ vncore_file(vncore_store_info('logo')) }}" style="max-height:60px;">
         <div class="page-tools">
             <div class="action-buttons">
                 <a class="btn btn-sm bg-white btn-light mx-1px text-95 dont-print" onclick="order_print()" data-title="Print">
@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="text-center text-150">
-                            <span class="text-default-d3">{{ vncore_store('title') }}</span>
+                            <span class="text-default-d3">{{ vncore_store_info('title') }}</span>
                         </div>
                     </div>
                 </div>

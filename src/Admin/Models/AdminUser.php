@@ -303,6 +303,6 @@ class AdminUser extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $emailReset = $this->getEmailForPasswordReset();
-        return vncore_admin_sendmail_reset_notification($token, $emailReset);
+        return vncore_mail_admin_send_reset_notification($token, $emailReset);
     }
 }

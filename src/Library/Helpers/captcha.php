@@ -39,14 +39,14 @@ if (!function_exists('vncore_captcha_page') && !in_array('vncore_captcha_page', 
     }
 }
 
-if (!function_exists('vncore_get_plugin_captcha_installed') && !in_array('vncore_get_plugin_captcha_installed', config('vncore_functions_except', []))) {
+if (!function_exists('vncore_captcha_get_plugin_installed') && !in_array('vncore_captcha_get_plugin_installed', config('vncore_functions_except', []))) {
     /**
      * Get all class plugin captcha installed
      *
      * @param   [string]  $code  Payment, Shipping
      *
      */
-    function vncore_get_plugin_captcha_installed($onlyActive = true)
+    function vncore_captcha_get_plugin_installed($onlyActive = true)
     {
         $listPluginInstalled =  \Vncore\Core\Admin\Models\AdminConfig::getPluginCaptchaCode($onlyActive);
         $arrPlugin = [];

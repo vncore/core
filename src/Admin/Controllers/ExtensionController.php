@@ -11,7 +11,7 @@ trait  ExtensionController
         $action = request('action');
         $key = request('key');
         if ($action == 'config' && $key != '') {
-            $namespace = vncore_get_class_extension_config(type:$this->type, key:$key);
+            $namespace = vncore_extension_get_class_config(type:$this->type, key:$key);
             $body = (new $namespace)->clickApp();
         } else {
             $body = $this->render();
@@ -22,8 +22,8 @@ trait  ExtensionController
     public function render()
     {
         $extensionProtected = config('vncore-config.extension.extension_protected')[$this->groupType] ?? [];
-        $extensionsInstalled = vncore_get_extension_installed(type:$this->type, active: false);
-        $extensions = vncore_get_all_extension_local(type: $this->type);
+        $extensionsInstalled = vncore_extension_get_installed(type:$this->type, active: false);
+        $extensions = vncore_extension_get_all_local(type: $this->type);
 
         switch ($this->type) {
             case 'Template':
@@ -67,7 +67,7 @@ trait  ExtensionController
     public function install()
     {
         $key = request('key');
-        $namespace = vncore_get_class_extension_config(type:$this->type, key:$key);
+        $namespace = vncore_extension_get_class_config(type:$this->type, key:$key);
         $response = (new $namespace)->install();
         if (is_array($response) && $response['error'] == 0) {
             vncore_notice_add(type:$this->type, typeId: $key, content:'admin_notice.vncore_'.strtolower($this->type).'_install');
@@ -93,7 +93,7 @@ trait  ExtensionController
         }
 
         $onlyRemoveData = request('onlyRemoveData');
-        $namespace = vncore_get_class_extension_config(type:$this->type, key:$key);
+        $namespace = vncore_extension_get_class_config(type:$this->type, key:$key);
         $response = (new $namespace)->uninstall();
         $appPath = 'Vncore/'.$this->groupType.'/'.$key;
         if (!$onlyRemoveData) {
@@ -115,7 +115,7 @@ trait  ExtensionController
     public function enable()
     {
         $key = request('key');
-        $namespace = vncore_get_class_extension_config(type:$this->type, key:$key);
+        $namespace = vncore_extension_get_class_config(type:$this->type, key:$key);
         $response = (new $namespace)->enable();
         if (is_array($response) && $response['error'] == 0) {
             vncore_notice_add(type:$this->type, typeId: $key, content:'admin_notice.vncore_'.strtolower($this->type).'_enable');
@@ -140,7 +140,7 @@ trait  ExtensionController
             }
         }
 
-        $namespace = vncore_get_class_extension_config(type:$this->type, key:$key);
+        $namespace = vncore_extension_get_class_config(type:$this->type, key:$key);
         $response = (new $namespace)->disable();
         if (is_array($response) && $response['error'] == 0) {
             vncore_notice_add(type: $this->type, typeId: $key, content:'admin_notice.vncore_'.strtolower($this->type).'_disable');
@@ -216,7 +216,7 @@ trait  ExtensionController
                         return redirect()->back()->with('error', vncore_language_render('admin.extension.error_config_format'));
                     }
                     //Check extension exist
-                    $arrPluginLocal = vncore_get_all_extension_local(type: $this->type);
+                    $arrPluginLocal = vncore_extension_get_all_local(type: $this->type);
                     if (array_key_exists($configKey, $arrPluginLocal)) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
                         return redirect()->back()->with('error', vncore_language_render('admin.extension.error_exist'));
@@ -236,7 +236,7 @@ trait  ExtensionController
                         File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName.'/public'), public_path($appPath));
                         File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName), app_path($appPath));
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        $namespace = vncore_get_class_extension_config(type:$this->type, key:$configKey);
+                        $namespace = vncore_extension_get_class_config(type:$this->type, key:$configKey);
                         $response = (new $namespace)->install();
                         if (!is_array($response) || $response['error'] == 1) {
                             return redirect()->back()->with('error', $response['msg']);

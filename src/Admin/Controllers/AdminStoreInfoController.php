@@ -13,7 +13,7 @@ class AdminStoreInfoController extends RootAdminController
     public function __construct()
     {
         parent::__construct();
-        $this->templates = vncore_get_extension_installed(type: 'Template', active: true);
+        $this->templates = vncore_extension_get_installed(type: 'Template', active: true);
         $this->languages = AdminLanguage::getListActive();
     }
 
@@ -46,7 +46,7 @@ class AdminStoreInfoController extends RootAdminController
                 } elseif ($name == 'domain') {
                     if (
                         $storeId == VNCORE_ID_ROOT 
-                        || ((vncore_store_check_multi_vendor_installed()) && vncore_store_is_partner($storeId)) 
+                        || ((vncore_store_check_multi_partner_installed()) && vncore_store_is_partner($storeId)) 
                         || vncore_store_check_multi_store_installed()
                     ) {
                         // Only store root can edit domain
@@ -76,8 +76,8 @@ class AdminStoreInfoController extends RootAdminController
                     $templateKey = $value;
                     $oldTepmlateKey = $store->template;
                     
-                    $classTemplate = vncore_get_class_extension_config(type:'Template', key:$templateKey);
-                    $oldClassTemplate = vncore_get_class_extension_config(type:'Template', key:$oldTepmlateKey);
+                    $classTemplate = vncore_extension_get_class_config(type:'Template', key:$templateKey);
+                    $oldClassTemplate = vncore_extension_get_class_config(type:'Template', key:$oldTepmlateKey);
 
                     (new $oldClassTemplate)->removeStore($storeId);
                     (new $classTemplate)->setupStore($storeId);

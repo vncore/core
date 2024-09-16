@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Mail;
  *
  * @return  mixed
  */
-if (!function_exists('vncore_send_mail') && !in_array('vncore_send_mail', config('vncore_functions_except', []))) {
-    function vncore_send_mail($view, array $dataView = [], array $emailConfig = [], array $attach = [])
+if (!function_exists('vncore_mail_send') && !in_array('vncore_mail_send', config('vncore_functions_except', []))) {
+    function vncore_mail_send($view, array $dataView = [], array $emailConfig = [], array $attach = [])
     {
         //Check email action mode is enable
         if (!empty(vncore_config('email_action_mode'))) {
@@ -23,7 +23,7 @@ if (!function_exists('vncore_send_mail') && !in_array('vncore_send_mail', config
             if (!empty(vncore_config('email_action_queue'))) {
                 dispatch(new SendEmailJob($view, $dataView, $emailConfig, $attach));
             } else {
-                vncore_process_send_mail($view, $dataView, $emailConfig, $attach);
+                vncore_mail_process_send($view, $dataView, $emailConfig, $attach);
             }
         } else {
             return false;
@@ -40,8 +40,8 @@ if (!function_exists('vncore_send_mail') && !in_array('vncore_send_mail', config
  *
  * @return  [][][]                [return description]
  */
-if (!function_exists('vncore_process_send_mail') && !in_array('vncore_process_send_mail', config('vncore_functions_except', []))) {
-    function vncore_process_send_mail($view, array $dataView = [], array $emailConfig = [], array $attach = [])
+if (!function_exists('vncore_mail_process_send') && !in_array('vncore_mail_process_send', config('vncore_functions_except', []))) {
+    function vncore_mail_process_send($view, array $dataView = [], array $emailConfig = [], array $attach = [])
     {
         try {
             Mail::send(new SendMail($view, $dataView, $emailConfig, $attach));
@@ -55,8 +55,8 @@ if (!function_exists('vncore_process_send_mail') && !in_array('vncore_process_se
 /**
  * Send email reset password
  */
-if (!function_exists('vncore_admin_sendmail_reset_notification') && !in_array('vncore_admin_sendmail_reset_notification', config('vncore_functions_except', []))) {
-    function vncore_admin_sendmail_reset_notification(string $token, string $emailReset)
+if (!function_exists('vncore_mail_admin_send_reset_notification') && !in_array('vncore_mail_admin_send_reset_notification', config('vncore_functions_except', []))) {
+    function vncore_mail_admin_send_reset_notification(string $token, string $emailReset)
     {
         $url = vncore_route_admin('admin.password_reset', ['token' => $token]);
         $dataView = [
@@ -73,6 +73,6 @@ if (!function_exists('vncore_admin_sendmail_reset_notification') && !in_array('v
             'subject' => vncore_language_render('email.forgot_password.reset_button'),
         ];
 
-        vncore_send_mail(config('vncore-config.admin.path_view').'::email.forgot_password', $dataView, $config, $dataAtt = []);
+        vncore_mail_send(config('vncore-config.admin.path_view').'::email.forgot_password', $dataView, $config, $dataAtt = []);
     }
 }
