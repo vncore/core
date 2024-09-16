@@ -21,7 +21,7 @@ trait  ExtensionController
 
     public function render()
     {
-        $extensionProtected = config('vncore-config.extension.extension_protected')[$this->groupType] ?? [];
+        $extensionProtected = config('vncore-config.admin.extension.extension_protected')[$this->groupType] ?? [];
         $extensionsInstalled = vncore_extension_get_installed(type:$this->type, active: false);
         $extensions = vncore_extension_get_all_local(type: $this->type);
 

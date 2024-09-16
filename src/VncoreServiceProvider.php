@@ -370,8 +370,8 @@ class VncoreServiceProvider extends ServiceProvider
     protected function middlewareGroups()
     {
         return [
-            'admin'        => config('vncore-config.middleware.admin'),
-            'api.extend'   => config('vncore-config.middleware.api_extend'),
+            'admin'        => config('vncore-config.admin.middleware'),
+            'api.extend'   => config('vncore-config.api.middleware'),
         ];
     }
 

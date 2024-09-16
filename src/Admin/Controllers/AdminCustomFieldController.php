@@ -231,7 +231,7 @@ class AdminCustomFieldController extends RootAdminController
      * @return  [type]  [return description]
      */
     public function fieldTypes() {
-        return config('vncore-config.schema_customize', []);
+        return config('vncore-config.admin.schema_customize', []);
     }
 
     public function selectTypes() {

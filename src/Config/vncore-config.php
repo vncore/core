@@ -13,6 +13,32 @@ return [
         'admin_log'           => env('VNCORE_ADMIN_LOG', 1), //Log access admin
 
         'forgot_password'     => env('VNCORE_ADMIN_FORGOT_PASSWORD', 1), //Enable feature forgot password
+
+        'schema_customize' => [
+            // List of tables that can be customized add new fields
+            // Format is table_name => table_label
+            // Example: 'shop_product' => 'Product'
+        ],
+
+        //Config for extension
+        'extension' => [
+            'extension_protected' => [
+                'Plugins' => explode(',', env('VNCORE_PROTECTED_PLUGINS', '')), // 'Plugin1','Plugin2'
+                'Templates' => explode(',', env('VNCORE_PROTECTED_TEMPLATES', '')), // 'Template1','Template2'
+            ],
+        
+        ],
+
+        'middleware'  => [
+            1        => 'admin.auth',
+            2        => 'admin.permission',
+            3        => 'admin.pjax',
+            4        => 'admin.log',
+            5        => 'admin.storeId',
+            6        => 'localization',
+            7        => 'admin.session',
+        ],
+
     ],
 
     //Config for api
@@ -28,40 +54,11 @@ return [
             'api_scope_user_guest' => env('VNCORE_API_SCOPE_USER_GUEST', 'user-guest'), //string, separated by commas
             'api_scope_admin' => env('VNCORE_API_SCOPE_ADMIN', 'admin-supper'),//string, separated by commas
         ],
-    ],
-
-    //Config for middleware
-    'middleware'     => [
-            'admin'      => [
-                1        => 'admin.auth',
-                2        => 'admin.permission',
-                3        => 'admin.pjax',
-                4        => 'admin.log',
-                5        => 'admin.storeId',
-                6        => 'localization',
-                7        => 'admin.session',
-            ],
-            'api_extend' => [
-                1        => 'json.response',
-                2        => 'api.connection',
-                3        => 'throttle: 1000',
-            ],
-    ],
-
-    //Config for extension
-    'extension' => [
-        'extension_protected' => [
-            'Plugins' => explode(',', env('VNCORE_PROTECTED_PLUGINS', '')), // 'Plugin1','Plugin2'
-            'Templates' => explode(',', env('VNCORE_PROTECTED_TEMPLATES', '')), // 'Template1','Template2'
+        'middleware' => [
+            1        => 'json.response',
+            2        => 'api.connection',
+            3        => 'throttle: 1000',
         ],
-    
-    ],
-
-
-    'schema_customize' => [
-        // List of tables that can be customized add new fields
-        // Format is table_name => table_label
-        // Example: 'shop_product' => 'Product'
     ],
 
     'env' => [
