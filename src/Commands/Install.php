@@ -53,6 +53,10 @@ class Install extends Command
             $this->call('db:seed', ['--class' => '\Vncore\Core\DB\seeders\DataLocaleSeeder', '--force' => true]);
             $this->info('---------------> Seeding database Vncore local done!');
 
+            if (class_exists('\Vncore\Front\Commands\FrontInstall')) {
+                $this->call('vncore:front-install');
+            }
+
             $this->call('vendor:publish', ['--tag' => 'vncore:public-static']);
             $this->call('vendor:publish', ['--tag' => 'vncore:public-vendor']);
             $this->call('vendor:publish', ['--tag' => 'vncore:functions-except']);
