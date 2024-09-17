@@ -188,7 +188,6 @@ class VncoreServiceProvider extends ServiceProvider
             }
 
             $this->loadViewsFrom(__DIR__.'/Views/admin', config('vncore-config.admin.path_view'));
-            $this->loadViewsFrom(__DIR__.'/Views/front', config('vncore-config.front.path_view'));
             $this->loadViewsFrom(app_path().'/Vncore/Blocks', 'VncoreBlock');
     
             //Load Plugin Provider
@@ -414,7 +413,6 @@ class VncoreServiceProvider extends ServiceProvider
             $this->publishes([__DIR__.'/public/Vncore' => public_path('Vncore')], 'vncore:public-static');
             $this->publishes([__DIR__.'/public/vendor' => public_path('vendor')], 'vncore:public-vendor');
             $this->publishes([__DIR__.'/Views/admin' => resource_path('views/vendor/'.config('vncore-config.admin.path_view'))], 'vncore:view-admin');
-            $this->publishes([__DIR__.'/Views/front' => resource_path('views/vendor/'.config('vncore-config.front.path_view'))], 'vncore:view-front');
             $this->publishes([__DIR__.'/Config/vncore-config.php' => config_path('vncore-config.php')], 'vncore:config');
             $this->publishes([__DIR__.'/Config/lfm.php' => config_path('lfm.php')], 'vncore:config-lfm');
             $this->publishes([__DIR__.'/Config/vncore_functions_except.stub' => config_path('vncore_functions_except.php')], 'vncore:functions-except');
