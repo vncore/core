@@ -1,24 +1,40 @@
 <?php
 
-
-// Route api
+// Route api admin
 Route::group(
     [
         'middleware' => VNCORE_API_MIDDLEWARE,
-        'prefix' => 'api',
-        'namespace' => '\Vncore\Core\Api\Controllers',
+        'prefix' => VNCORE_API_PREFIX,
     ],
     function () {
 
-        // Admin
-        Route::group(['prefix' => config('vncore-config.env.VNCORE_ADMIN_PREFIX')], function () {
-            Route::post('login', 'AdminAuthController@login');
-            Route::group([
-                'middleware' => ['auth:admin-api', config('vncore-config.api.auth.api_scope_type_admin').':'.config('vncore-config.api.auth.api_scope_admin')]
-            ], function () {
-                Route::get('logout', 'AdminAuthController@logout');
-                Route::get('info', 'AdminController@getInfo');
-            });
+        if (file_exists(app_path('Vncore/Core/Api/Controllers/AdminAuthController.php'))) {
+            $nameSpaceHome = 'App\Vncore\Core\Api\Controllers';
+        } else {
+            $nameSpaceHome = 'Vncore\Core\Api\Controllers';
+        }
+        Route::post('login', $nameSpaceHome.'\AdminAuthController@login');
+
+        Route::group([
+            'middleware' => [
+                'auth:admin-api', 
+                config('vncore-config.api.auth.api_scope_type_admin').':'.config('vncore-config.api.auth.api_scope_admin')
+            ]
+        ], function () {
+            if (file_exists(app_path('Vncore/Core/Api/Controllers/AdminAuthController.php'))) {
+                $nameSpaceHome = 'App\Vncore\Core\Api\Controllers';
+            } else {
+                $nameSpaceHome = 'Vncore\Core\Api\Controllers';
+            }
+            Route::get('logout', $nameSpaceHome.'\AdminAuthController@logout');
+
+
+            if (file_exists(app_path('Vncore/Core/Api/Controllers/AdminController.php'))) {
+                $nameSpaceHome = 'App\Vncore\Core\Api\Controllers';
+            } else {
+                $nameSpaceHome = 'Vncore\Core\Api\Controllers';
+            }
+            Route::get('info', $nameSpaceHome.'\AdminController@getInfo');
         });
     }
 );

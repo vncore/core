@@ -11,6 +11,7 @@ define('VNCORE_GUARD_ROLES', ['1', '2']); // admin, only view
  */
 define('VNCORE_ADMIN_MIDDLEWARE', ['web', 'admin']);
 define('VNCORE_API_MIDDLEWARE', ['api', 'api.extend']);
+define('VNCORE_API_PREFIX', 'api/'.config('vncore-config.env.VNCORE_ADMIN_PREFIX'));
 define('VNCORE_DB_CONNECTION', config('vncore-config.env.VNCORE_DB_CONNECTION'));
 //Prefix url admin
 define('VNCORE_ADMIN_PREFIX', config('vncore-config.env.VNCORE_ADMIN_PREFIX'));

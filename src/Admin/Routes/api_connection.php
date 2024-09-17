@@ -1,6 +1,6 @@
 <?php
-if (file_exists(app_path('Vncore/Admin/Controllers/AdminApiConnectionController.php'))) {
-    $nameSpaceAdminApi = 'App\Vncore\Admin\Controllers';
+if (file_exists(app_path('Vncore/Core/Admin/Controllers/AdminApiConnectionController.php'))) {
+    $nameSpaceAdminApi = 'App\Vncore\Core\Admin\Controllers';
 } else {
     $nameSpaceAdminApi = 'Vncore\Core\Admin\Controllers';
 }

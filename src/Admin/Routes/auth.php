@@ -1,6 +1,6 @@
 <?php
-if (file_exists(app_path('Vncore/Admin/Controllers/Auth/LoginController.php'))) {
-    $nameSpaceAdminAuth = 'App\Vncore\Admin\Controllers';
+if (file_exists(app_path('Vncore/Core/Admin/Controllers/Auth/LoginController.php'))) {
+    $nameSpaceAdminAuth = 'App\Vncore\Core\Admin\Controllers';
 } else {
     $nameSpaceAdminAuth = 'Vncore\Core\Admin\Controllers';
 }

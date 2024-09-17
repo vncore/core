@@ -54,6 +54,9 @@ class VncoreServiceProvider extends ServiceProvider
             if (!is_dir($directory = app_path('Vncore/Blocks'))) {
                 mkdir($directory, 0755, true);
             }
+            if (!is_dir($directory = app_path('Vncore/Core'))) {
+                mkdir($directory, 0755, true);
+            }
         } catch (\Throwable $e) {
             $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
             echo $msg;

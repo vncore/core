@@ -47,6 +47,7 @@ Vncore 1.x
     |
     ├── app
     │     └── Vncore
+    │           ├── Core(+) //Customize controller core
     │           ├── Blocks(+)
     │           ├── Helpers(+)
     │           ├── Templates(+)

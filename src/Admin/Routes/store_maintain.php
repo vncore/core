@@ -1,6 +1,6 @@
 <?php
-if (file_exists(app_path('Vncore/Admin/Controllers/AdminStoreMaintainController.php'))) {
-    $nameSpaceAdminStoreMaintain = 'App\Vncore\Admin\Controllers';
+if (file_exists(app_path('Vncore/Core/Admin/Controllers/AdminStoreMaintainController.php'))) {
+    $nameSpaceAdminStoreMaintain = 'App\Vncore\Core\Admin\Controllers';
 } else {
     $nameSpaceAdminStoreMaintain = 'Vncore\Core\Admin\Controllers';
 }

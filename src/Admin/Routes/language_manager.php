@@ -1,6 +1,6 @@
 <?php
-if (file_exists(app_path('Vncore/Admin/Controllers/AdminLanguageManagerController.php'))) {
-    $nameSpaceAdminLangManager = 'App\Vncore\Admin\Controllers';
+if (file_exists(app_path('Vncore/Core/Admin/Controllers/AdminLanguageManagerController.php'))) {
+    $nameSpaceAdminLangManager = 'App\Vncore\Core\Admin\Controllers';
 } else {
     $nameSpaceAdminLangManager = 'Vncore\Core\Admin\Controllers';
 }

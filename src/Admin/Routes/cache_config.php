@@ -1,6 +1,6 @@
 <?php
-if (file_exists(app_path('Vncore/Admin/Controllers/AdminCacheConfigController.php'))) {
-    $nameSpaceAdminCacheConfig = 'App\Vncore\Admin\Controllers';
+if (file_exists(app_path('Vncore/Core/Admin/Controllers/AdminCacheConfigController.php'))) {
+    $nameSpaceAdminCacheConfig = 'App\Vncore\Core\Admin\Controllers';
 } else {
     $nameSpaceAdminCacheConfig = 'Vncore\Core\Admin\Controllers';
 }

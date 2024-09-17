@@ -11,8 +11,8 @@ Route::group(
         foreach (glob(__DIR__ . '/Routes/*.php') as $filename) {
             $this->loadRoutesFrom($filename);
         }
-        if (file_exists(app_path('Vncore/Admin/Controllers/HomeController.php'))) {
-            $nameSpaceHome = 'App\Vncore\Admin\Controllers';
+        if (file_exists(app_path('Vncore/Core/Admin/Controllers/HomeController.php'))) {
+            $nameSpaceHome = 'App\Vncore\Core\Admin\Controllers';
         } else {
             $nameSpaceHome = 'Vncore\Core\Admin\Controllers';
         }
