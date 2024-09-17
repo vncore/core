@@ -57,7 +57,8 @@ Vncore 1.x
     │           ├── Admin(+)
     │           ├── Templates(+)
     │           └── Plugins(+)
-    ├── resources (+)
+    ├── resources/views/vendor
+    │                        └── vncore-admin(+) //Customize view admin
     ├── vendor
     │     └── vncore/core
     ├── .env
