@@ -127,15 +127,15 @@ To create a zip file template:
 
 ## Customize
 
-Customize vncore-config and functions
+**Customize vncore-config and functions**
 
 >`php artisan vncore:customize config`
 
-Customize view admin
+**Customize view admin**
 
 >`php artisan vncore:customize view`
 
-Overwrite vncore_* helper functions
+**Overwrite vncore_* helper functions**
 
 >Step 1: Use the command `php artisan vncore:customize config` to copy the file `app/config/vncore_functions_except.php`
 
@@ -143,11 +143,17 @@ Overwrite vncore_* helper functions
 
 >Step 3: Create a new function in the `app/Vncore/Helpers folder`
 
-Overwrite vncore controller files
+**Overwrite vncore controller files**
 
->Step 1: Copy the controller files you want to override in vendor/vncore/core/src/Admin/Controllers to app/Vncore/Admin/Controllers
+>Step 1: Copy the controller files you want to override in vendor/vncore/core/src/Admin/Controllers -> app/Vncore/Core/Admin/Controllers
 
->Step 2: Change `namespace Vncore\Core\Admin\Controllers` to `namespace App\Vncore\Admin\Controllers`
+>Step 2: Change `namespace Vncore\Core\Admin\Controllers` to `namespace App\Vncore\Core\Admin\Controllers`
+
+**Overwrite vncore API controller files**
+
+>Step 1: Copy the controller files you want to override in vendor vendor/vncore/core/src/Api/Controllers ->  app/Vncore/Core/Api/Controllers
+
+>Step 2: Change `namespace Vncore\Core\Api\Controllers` to `namespace App\Vncore\Core\Api\Controllers`
 
 ## Add route
 
