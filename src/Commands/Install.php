@@ -71,8 +71,7 @@ class Install extends Command
         }
     }
 
-    private function welcome()
-    {
+    private function welcome() {
         $text = "
         __      __     _____               
         \ \    / /    / ____|              
@@ -86,19 +85,9 @@ class Install extends Command
         $text .= "\n        Admin path: yourdomain/".config('vncore-config.env.VNCORE_ADMIN_PREFIX')."";
         $text .= "\n        User/password: admin/admin";
 
-        $terminalWidth = exec('tput cols');
-        $terminalHeight = exec('tput lines');
-
         $lines = explode("\n", $text);
-        $textHeight = count($lines);
-
-        $paddingTop = max(0, ($terminalHeight - $textHeight) / 2);
-
-        for ($i = 0; $i < $paddingTop; $i++) {
-            $this->line('');
-        }
         foreach ($lines as $line) {
-            $this->line(str_pad($line, $terminalWidth, ' ', STR_PAD_BOTH));
+            $this->line($line);
         }
 
         return Command::SUCCESS;
