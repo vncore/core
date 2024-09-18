@@ -24,7 +24,7 @@ class LogOperation
                 'method' => $request->method(),
                 'ip' => $request->getClientIp(),
                 'user_agent' => $request->header('User-Agent'),
-                'input' => json_encode($request->except(config('vncore-config.admin.admin_log_except'))),
+                'input' => json_encode($request->except(explode(',', config('vncore-config.admin.admin_log_except')))),
             ];
 
             try {

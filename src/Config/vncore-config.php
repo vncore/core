@@ -9,7 +9,7 @@ return [
         'path_view'           => 'vncore-admin',
 
         //Config log access admin
-        'admin_log_except'    => env('VNCORE_ADMIN_LOG_EXCEPT', ['password','password_confirmation']), //Except log
+        'admin_log_except'    => env('VNCORE_ADMIN_LOG_EXCEPT', 'password,password_confirmation'), //Except log
         'admin_log'           => env('VNCORE_ADMIN_LOG', 1), //Log access admin
 
         'forgot_password'     => env('VNCORE_ADMIN_FORGOT_PASSWORD', 1), //Enable feature forgot password
