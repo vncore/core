@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 // Route api admin
 Route::group(
     [

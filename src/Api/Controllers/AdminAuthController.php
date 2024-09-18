@@ -71,7 +71,7 @@ class AdminAuthController extends RootAdminController
      */
     public function logout(Request $request)
     {
-        $request->user()->token()->revoke();
+        $request->user()->currentAccessToken()->delete();
         return response()->json([
             'error' => 0,
             'msg' => 'Successfully logged out'
