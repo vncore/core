@@ -90,10 +90,15 @@ class Make extends Command
             }
 
             if (file_exists(storage_path($tmp.'/Controllers/FrontController.php'))) {
-                $frontController = file_get_contents(storage_path($tmp.'/Controllers/FrontController.php'));
-                $frontController      = str_replace('Extension_Key', $extensionKey, $frontController);
-                $frontController      = str_replace('ExtensionUrlKey', $extensionUrlKey, $frontController);
-                file_put_contents(storage_path($tmp.'/Controllers/FrontController.php'), $frontController);
+                // Process front controller
+                if (class_exists('Vncore\Front\Controllers\RootFrontController')) {
+                    $frontController = file_get_contents(storage_path($tmp.'/Controllers/FrontController.php'));
+                    $frontController      = str_replace('Extension_Key', $extensionKey, $frontController);
+                    $frontController      = str_replace('ExtensionUrlKey', $extensionUrlKey, $frontController);
+                    file_put_contents(storage_path($tmp.'/Controllers/FrontController.php'), $frontController);
+                } else {
+                    File::delete(storage_path($tmp.'/Controllers/FrontController.php'));
+                }
             }
 
             $model = file_get_contents(storage_path($tmp.'/Models/ExtensionModel.php'));
@@ -125,10 +130,19 @@ class Make extends Command
             $provider          = str_replace('ExtensionUrlKey', $extensionUrlKey, $provider);
             file_put_contents(storage_path($tmp.'/Provider.php'), $provider);
 
+            if (class_exists('Vncore\Front\Controllers\RootFrontController')) {
+                $stubContent = file_get_contents(storage_path($tmp.'/route_front.stub'));
+                $stubContent      = str_replace('Extension_Key', $extensionKey, $stubContent);
+                $stubContent          = str_replace('ExtensionUrlKey', $extensionUrlKey, $stubContent);
+            } else {
+                $stubContent = '';
+            }
             $route = file_get_contents(storage_path($tmp.'/Route.php'));
             $route      = str_replace('Extension_Key', $extensionKey, $route);
             $route          = str_replace('ExtensionUrlKey', $extensionUrlKey, $route);
+            $route          = str_replace('//$stub_front', $stubContent, $route);
             file_put_contents(storage_path($tmp.'/Route.php'), $route);
+            File::delete(storage_path($tmp.'/route_front.stub'));
 
         } catch (\Throwable $e) {
             $msg = $e->getMessage();

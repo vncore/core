@@ -3,7 +3,8 @@
 namespace App\Vncore\Plugins\Extension_Key\Controllers;
 
 use App\Vncore\Plugins\Extension_Key\AppConfig;
-use Vncore\Core\Front\Controllers\RootFrontController;
+use Vncore\Front\Controllers\RootFrontController;
+
 class FrontController extends RootFrontController
 {
     public $plugin;

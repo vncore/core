@@ -5,16 +5,9 @@ $config = file_get_contents(__DIR__.'/vncore.json');
 $config = json_decode($config, true);
 
 if(vncore_extension_check_active($config['configGroup'], $config['configKey'])) {
-    Route::group(
-        [
-            'prefix'    => 'plugin/ExtensionUrlKey',
-            'namespace' => 'App\Vncore\Plugins\Extension_Key\Controllers',
-        ],
-        function () {
-            Route::get('index', 'FrontController@index')
-            ->name('ExtensionUrlKey.index');
-        }
-    );
+
+
+    //$stub_front
 
     Route::group(
         [

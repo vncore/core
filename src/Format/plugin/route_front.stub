@@ -1,0 +1,11 @@
+Route::group(
+    [
+        'middleware' => VNCORE_FRONT_MIDDLEWARE,
+        'prefix'    => 'plugin/ExtensionUrlKey',
+        'namespace' => 'App\Vncore\Plugins\Extension_Key\Controllers',
+    ],
+    function () {
+        Route::get('index', 'FrontController@index')
+        ->name('ExtensionUrlKey.index');
+    }
+);
