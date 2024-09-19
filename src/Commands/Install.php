@@ -14,7 +14,7 @@ class Install extends Command
      *
      * @var string
      */
-    protected $signature = 'vncore:install';
+    protected $signature = 'vncore:install {--force=0}';
 
     /**
      * The console command description.
@@ -30,13 +30,17 @@ class Install extends Command
      */
     public function handle()
     {
+        $force = $this->option('force') ?? 0;
         if ($this->confirm('Are you sure you want to install Vncore?')) {
 
             if (!$this->checkEnv()) {
                 return Command::FAILURE;
             }
-            if (!$this->checkVncoreInstalled()) {
-                return Command::FAILURE;
+
+            if (!$force) {
+                if (!$this->checkVncoreInstalled()) {         
+                    return Command::FAILURE;
+                }
             }
 
             $this->call('migrate');
@@ -81,9 +85,10 @@ class Install extends Command
             \/ |_| |_|\_____\___/|_|  \___|
         ";
 
-        $text .= "\n        Welcome to VnCore ".config('vncore.core-sub-version')."!";
-        $text .= "\n        Admin path: yourdomain/".config('vncore-config.env.VNCORE_ADMIN_PREFIX')."";
-        $text .= "\n        User/password: admin/admin";
+        $text .= "\n               Welcome to VnCore ".config('vncore.core-sub-version');
+        $text .= "\n               Admin path: yourdomain/".config('vncore-config.env.VNCORE_ADMIN_PREFIX')."";
+        $text .= "\n               User/password: admin/admin";
+        $text .= "\n";
 
         $lines = explode("\n", $text);
         foreach ($lines as $line) {
@@ -99,8 +104,7 @@ class Install extends Command
             $this->fail("File .env not found");
             return false;
         } else if (!config('app.key')) {
-            $this->fail("Not found APP_KEY in file .env");
-            return false;
+            $this->call('key:generate');
         }
         return true;
     }

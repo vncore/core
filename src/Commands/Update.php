@@ -58,8 +58,6 @@ class Update extends Command
             exit();
         }
         $this->info('---------------------');
-        $this->info('Front version: '.config('vncore.version'));
-        $this->info('Front sub-version: '.config('vncore.sub-version'));
         $this->info('Core: '.config('vncore.core'));
         $this->info('Core sub-version: '.config('vncore.core-sub-version'));
     }

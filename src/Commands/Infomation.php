@@ -32,18 +32,17 @@ class Infomation extends Command
         $this->welcome();
         $this->info(config('vncore.name'));
         $this->info(config('vncore.auth').' <'.config('vncore.email').'>');
-        $this->info('Front version: '.config('vncore.version'));
-        $this->info('Front sub-version: '.config('vncore.sub-version'));
-        $this->info('Core: '.config('vncore.core'));
-        $this->info('Core sub-version: '.config('vncore.core-sub-version'));
+        $this->info('- Core: '.config('vncore.core'));
+        $this->info('- Core sub-version: '.config('vncore.core-sub-version'));
+        $this->info('');
         $this->info('Homepage: '.config('vncore.homepage'));
         $this->info('Github: '.config('vncore.github'));
         $this->info('Facebook: '.config('vncore.facebook'));
         $this->info('API: '.config('vncore-config.env.VNCORE_LIBRARY_API'));
+        $this->info('');
     }
 
-    private function welcome()
-    {
+    private function welcome() {
         $text = "
         __      __     _____               
         \ \    / /    / ____|              
@@ -53,21 +52,14 @@ class Infomation extends Command
             \/ |_| |_|\_____\___/|_|  \___|
         ";
 
-        $text .= "\n        Welcome to VnCore ".config('vncore.core-sub-version')."!";
-
-        $terminalWidth = exec('tput cols');
-        $terminalHeight = exec('tput lines');
+        $text .= "\n               Welcome to VnCore ".config('vncore.core-sub-version');
+        $text .= "\n";
 
         $lines = explode("\n", $text);
-        $textHeight = count($lines);
-
-        $paddingTop = max(0, ($terminalHeight - $textHeight) / 2);
-
-        for ($i = 0; $i < $paddingTop; $i++) {
-            $this->line('');
-        }
         foreach ($lines as $line) {
-            $this->line(str_pad($line, $terminalWidth, ' ', STR_PAD_BOTH));
+            $this->line($line);
         }
+
+        return Command::SUCCESS;
     }
 }
