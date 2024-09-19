@@ -47,11 +47,12 @@ Vncore 1.x
     |
     ├── app
     │     └── Vncore
-    │           ├── Core(+) //Customize controller core
-    │           ├── Blocks(+)
-    │           ├── Helpers(+)
-    │           ├── Templates(+)
-    │           └── Plugins(+)
+    │           ├── Core(+) //Customize controller of Core
+    │           ├── Front(+) //Customize controller of Front (`if vncore/front installed`)
+    │           ├── Helpers(+) //Auto load Helpers/*.php
+    │           ├── Blocks(+) // The list of blades will be used to display on the admin homepage.
+    │           ├── Templates(+) //Extension Template. Use `php artisan vncore:make template --name=NameOfTempate`
+    │           └── Plugins(+) //Extension Plugin. Use `php artisan vncore:make plugin --name=NameOfPlugin`
     ├── public
     │     └── Vncore
     │           ├── Admin(+)
