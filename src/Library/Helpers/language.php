@@ -104,3 +104,18 @@ if (!function_exists('vncore_lang_switch') && !in_array('vncore_lang_switch', co
         }
     }
 }
+
+if (!function_exists('vncore_content_render') && !in_array('vncore_content_render', config('vncore_functions_except', []))) {
+    function vncore_content_render(string $content)
+    {
+        // $content = 'keyLang::param1__value1::param2__value2';
+        
+        $tmpString = explode('::', $content);
+        count($tmpString);
+        for ($i=0; $i < count($tmpString); $i++) {
+            $tmpParam = explode('__', $tmpString[$i]);
+            $arrParam[$tmpParam[0]]= $tmpParam[1] ?? '';
+        }
+        return vncore_language_render($tmpString[0], $arrParam);
+    }
+}
