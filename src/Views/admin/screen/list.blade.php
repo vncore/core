@@ -105,6 +105,24 @@
 
       <!-- /.card-header -->
       <div class="card-body p-0" id="pjax-container">
+
+        @if (!empty($blockTop) && count($blockTop))
+          @foreach ($blockTop as $item)
+            <div class="clearfix">
+              @php
+              $arrCheck = explode('view::', $item);
+              @endphp
+              @if (count($arrCheck) == 2)
+                @if (view()->exists($arrCheck[1]))
+                  @include($arrCheck[1])
+                @endif
+              @else
+                {!! trim($item) !!}
+              @endif
+            </div>    
+          @endforeach
+        @endif
+
         <div class="table-responsive">
         <table class="table table-hover box-body text-wrap table-bordered">
           <thead class="thead-light text-nowrap">
@@ -143,28 +161,25 @@
           </div>
         </div>
 
+        @if (!empty($blockBottom) && count($blockBottom))
+          @foreach ($blockBottom as $item)
+            <div class="clearfix">
+              @php
+              $arrCheck = explode('view::', $item);
+              @endphp
+              @if (count($arrCheck) == 2)
+                @if (view()->exists($arrCheck[1]))
+                  @include($arrCheck[1])
+                @endif
+              @else
+                {!! trim($item) !!}
+              @endif
+            </div>    
+          @endforeach
+        @endif
+
       </div>
       <!-- /.card-body -->
-
-      <div class="card-footer clearfix">
-        @if (!empty($blockBottom) && count($blockBottom))
-        @foreach ($blockBottom as $item)
-          <div class="clearfix">
-            @php
-            $arrCheck = explode('view::', $item);
-            @endphp
-            @if (count($arrCheck) == 2)
-              @if (view()->exists($arrCheck[1]))
-                @include($arrCheck[1])
-              @endif
-            @else
-              {!! trim($item) !!}
-            @endif
-          </div>    
-        @endforeach
-      @endif
-      </div>
-
 
     </div>
     <!-- /.card -->

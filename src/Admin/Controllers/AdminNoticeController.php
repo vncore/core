@@ -36,7 +36,7 @@ class AdminNoticeController extends RootAdminController
             $dataMap = [
                 'type' => '<span class="notice-'.$statusRead.'" >'.$row->type.'</span>',
                 'type_id' => '<span class="notice-'.$statusRead.'" >'.$row->type_id.'</span>',
-                'content' => '<span class="notice-'.$statusRead.'" >'.vncore_language_render($row->content).'</span>',
+                'content' => '<span class="notice-'.$statusRead.'" >'.vncore_content_render($row->content).'</span>',
                 'admin_created' => '<span class="notice-'.$statusRead.'" >'.($row->admin->name ?? $row->admin_created).'</span>',
                 'date' => $row->created_at,
             ];

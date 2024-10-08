@@ -175,7 +175,6 @@ class AdminApiConnectionController extends RootAdminController
         $data['rightContentMain'] = '<input class="switch-data-config" data-store=0 name="api_connection_required" type="checkbox"  '.(vncore_config_global('api_connection_required')?'checked':'').'><br> '.vncore_language_render('admin.api_connection.api_connection_required_help');
 
         $optionSort = '';
-        $data['urlSort'] = vncore_route_admin('admin_api_connection.index', request()->except(['_token', '_pjax', 'sort_order']));
         $data['optionSort'] = $optionSort;
         return view($this->vncore_templatePathAdmin.'screen.api_connection')
         ->with($data);

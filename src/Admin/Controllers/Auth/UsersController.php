@@ -42,8 +42,6 @@ class UsersController extends RootAdminController
         $arrSort = [
             'id__desc'       => vncore_language_render('filter_sort.id_desc'),
             'id__asc'        => vncore_language_render('filter_sort.id_asc'),
-            'username__desc' => vncore_language_render('filter_sort.alpha_desc', ['alpha' => 'username']),
-            'alpha__asc'  => vncore_language_render('filter_sort.alpha_asc', ['alpha' => 'username']),
             'name__desc'     => vncore_language_render('filter_sort.name_desc'),
             'name__asc'      => vncore_language_render('filter_sort.name_asc'),
         ];

@@ -26,7 +26,7 @@
         @else
         <i class="far fa-bell"></i>
         @endif
-        {{ vncore_language_render($notice->content) }}
+        {{ vncore_content_render($notice->content) }}
       <span class="text-muted notice-time">{{ vncore_datetime_to_date($notice->created_at, 'Y-m-d H:i:s') }}</span>
       </a>
     @endforeach
