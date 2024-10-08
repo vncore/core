@@ -70,7 +70,7 @@ trait  ExtensionController
         $namespace = vncore_extension_get_class_config(type:$this->type, key:$key);
         $response = (new $namespace)->install();
         if (is_array($response) && $response['error'] == 0) {
-            vncore_notice_add(type:$this->type, typeId: $key, content:'admin_notice.vncore_'.strtolower($this->type).'_install');
+            vncore_notice_add(type:$this->type, typeId: $key, content:'admin_notice.vncore_'.strtolower($this->type).'_install::name__'.$key);
             vncore_extension_update();
         }
         return response()->json($response);
@@ -101,7 +101,7 @@ trait  ExtensionController
             File::deleteDirectory(public_path($appPath));
         }
         if (is_array($response) && $response['error'] == 0) {
-            vncore_notice_add(type:$this->type, typeId: $key, content:'admin_notice.vncore_'.strtolower($this->type).'_uninstall');
+            vncore_notice_add(type:$this->type, typeId: $key, content:'admin_notice.vncore_'.strtolower($this->type).'_uninstall::name__'.$key);
             vncore_extension_update();
         }
         return response()->json($response);
@@ -118,7 +118,7 @@ trait  ExtensionController
         $namespace = vncore_extension_get_class_config(type:$this->type, key:$key);
         $response = (new $namespace)->enable();
         if (is_array($response) && $response['error'] == 0) {
-            vncore_notice_add(type:$this->type, typeId: $key, content:'admin_notice.vncore_'.strtolower($this->type).'_enable');
+            vncore_notice_add(type:$this->type, typeId: $key, content:'admin_notice.vncore_'.strtolower($this->type).'_enable::name__'.$key);
             vncore_extension_update();
         }
         return response()->json($response);
@@ -143,7 +143,7 @@ trait  ExtensionController
         $namespace = vncore_extension_get_class_config(type:$this->type, key:$key);
         $response = (new $namespace)->disable();
         if (is_array($response) && $response['error'] == 0) {
-            vncore_notice_add(type: $this->type, typeId: $key, content:'admin_notice.vncore_'.strtolower($this->type).'_disable');
+            vncore_notice_add(type: $this->type, typeId: $key, content:'admin_notice.vncore_'.strtolower($this->type).'_disable::name__'.$key);
             vncore_extension_update();
         }
         return response()->json($response);
@@ -257,7 +257,7 @@ trait  ExtensionController
             return redirect()->back()->with('error', vncore_language_render('admin.extension.error_upload'));
         }
 
-        vncore_notice_add(type:$this->type, typeId: $configKey, content:'admin_notice.vncore_'.strtolower($this->type).'_import');
+        vncore_notice_add(type:$this->type, typeId: $configKey, content:'admin_notice.vncore_'.strtolower($this->type).'_import::name__'.$configKey);
         vncore_extension_update();
 
         if ($linkRedirect) {

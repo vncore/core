@@ -84,7 +84,7 @@ class AdminStoreInfoController extends RootAdminController
 
                     AdminStore::where('id', $storeId)->update([$name => $templateKey]);
 
-                    vncore_notice_add(type:'template', typeId: $templateKey, content:'admin_notice.vncore_template_change');
+                    vncore_notice_add(type:'template', typeId: $templateKey, content:'admin_notice.vncore_template_change::old__'.$oldTepmlateKey.'__new__'.$templateKey);
                     vncore_extension_update();
 
                     $error = 0;

@@ -170,7 +170,7 @@ trait ExtensionOnlineController
             $response = ['error' => 1, 'msg' => $e->getMessage()];
         }
         if (is_array($response) && $response['error'] == 0) {
-            vncore_notice_add(type: $this->type, typeId: $key, content:'admin_notice.vncore_'.strtolower($this->type).'_install');
+            vncore_notice_add(type: $this->type, typeId: $key, content:'admin_notice.vncore_'.strtolower($this->type).'_install::name__'.$key);
             vncore_extension_update();
         }
         
