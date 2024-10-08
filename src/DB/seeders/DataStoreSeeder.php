@@ -81,7 +81,6 @@ class DataStoreSeeder extends Seeder
             ['group' => '','code' => 'customer_config_attribute_required','key' => 'customer_name_kana_required','value' => '0','sort' => '1','detail' => '','store_id' => $storeId],
             ['group' => '','code' => 'admin_config','key' => 'ADMIN_NAME','value' => 'Vncore System','sort' => '0','detail' => 'admin.env.ADMIN_NAME','store_id' => $storeId],
             ['group' => '','code' => 'admin_config','key' => 'ADMIN_TITLE','value' => 'Vncore Admin','sort' => '0','detail' => 'admin.env.ADMIN_TITLE','store_id' => $storeId],
-            ['group' => '','code' => 'admin_config','key' => 'ADMIN_LOGO','value' => 'Vncore <span class="brand-text font-weight-light">Admin</span>','sort' => '0','detail' => 'admin.env.ADMIN_LOGO','store_id' => $storeId],
             ['group' => '','code' => 'admin_config','key' => 'hidden_copyright_footer','value' => '0','sort' => '0','detail' => 'admin.env.hidden_copyright_footer','store_id' => $storeId],
             ['group' => '','code' => 'admin_config','key' => 'hidden_copyright_footer_admin','value' => '0','sort' => '0','detail' => 'admin.env.hidden_copyright_footer_admin','store_id' => $storeId],
             ['group' => '','code' => 'display_config','key' => 'product_top','value' => '12','sort' => '0','detail' => 'store.display.product_top','store_id' => $storeId],

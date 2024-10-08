@@ -17,12 +17,6 @@
         <td>{{ vncore_language_render('admin.env.ADMIN_TITLE') }}</td>
         <td><a href="#" class="editable-required editable editable-click" data-name="ADMIN_TITLE" data-type="text" data-pk="" data-source="" data-url="{{ $urlUpdateConfig }}" data-title="{{ vncore_language_render('admin.env.ADMIN_TITLE') }}" data-value="{{ vncore_config('ADMIN_TITLE', $storeId) }}" data-original-title="" title=""></a></td>
       </tr>
-
-      <tr>
-        <td>{{ vncore_language_render('admin.env.ADMIN_LOGO') }}</td>
-        <td><a href="#" class="editable-required editable editable-click" data-name="ADMIN_LOGO" data-type="text" data-pk="" data-source="" data-url="{{ $urlUpdateConfig }}" data-title="{{ vncore_language_render('admin.env.ADMIN_LOGO') }}" data-value="{{ vncore_config('ADMIN_LOGO', $storeId) }}" data-original-title="" title=""></a></td>
-      </tr>
-
       <tr>
         <td>{{ vncore_language_render('admin.env.hidden_copyright_footer_admin') }}</td>
         <td>

@@ -1,9 +1,16 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-light-pink elevation-4 sidebar-no-expand">
     <!-- Brand Logo -->
-    <a href="{{ vncore_route_admin('admin.home') }}" class="brand-link navbar-secondary">
-      {!! vncore_config_admin('ADMIN_LOGO') !!}
-    </a>
+
+    <a href="{{ vncore_route_admin('admin.home') }}" class="brand-link" style="padding: 2px">
+      <img src="{{ vncore_file(vncore_store_info('logo')) }}" alt="{!! vncore_config_admin('ADMIN_NAME') !!}" 
+    style="
+      max-height: 55px;
+      width: auto;
+      margin: 0 auto;
+      display: block;
+    ">
+      </a>
 
     <!-- Sidebar -->
     <div class="sidebar sidebar-lightblue">
