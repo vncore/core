@@ -8,35 +8,35 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ vncore_file('Vncore/admin/LTE/plugins/fontawesome-free/css/all.min.css')}}">
+  <link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/LTE/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="{{ vncore_file('Vncore/admin/plugin/ionicons.min.css')}}">
+  <link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/plugin/ionicons.min.css')}}">
   <!-- JQVMap -->
-  <link rel="stylesheet" href="{{ vncore_file('Vncore/admin/LTE/plugins/jqvmap/jqvmap.min.css')}}">
+  <link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/LTE/plugins/jqvmap/jqvmap.min.css')}}">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{ vncore_file('Vncore/admin/LTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+  <link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/LTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <!-- summernote -->
-  <link rel="stylesheet" href="{{ vncore_file('Vncore/admin/LTE/plugins/summernote/summernote-bs4.css')}}">
+  <link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/LTE/plugins/summernote/summernote-bs4.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <!-- iCheck -->
-  <link rel="stylesheet" href="{{ vncore_file('Vncore/admin/LTE/plugins/iCheck/square/blue.css')}}">
-  <link rel="stylesheet" href="{{ vncore_file('Vncore/admin/LTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/LTE/plugins/iCheck/square/blue.css')}}">
+  <link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/LTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   <!-- Select2 -->
-  <link rel="stylesheet" href="{{ vncore_file('Vncore/admin/LTE/plugins/select2/css/select2.min.css')}}">
+  <link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/LTE/plugins/select2/css/select2.min.css')}}">
   <!-- Daterange picker -->
-  {{-- <link rel="stylesheet" href="{{ vncore_file('Vncore/admin/LTE/plugins/daterangepicker/daterangepicker.css')}}"> --}}
+  {{-- <link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/LTE/plugins/daterangepicker/daterangepicker.css')}}"> --}}
   <!-- Tempusdominus Bbootstrap 4 -->
-  {{-- <link rel="stylesheet" href="{{ vncore_file('Vncore/admin/LTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}"> --}}
+  {{-- <link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/LTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}"> --}}
 
   @section('block_component_css')
     @include($vncore_templatePathAdmin.'component.css')
   @show
 
-  <link rel="stylesheet" href="{{ vncore_file('Vncore/admin/LTE/plugins/jquery-ui/jquery-ui.min.css')}}">
+  <link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/LTE/plugins/jquery-ui/jquery-ui.min.css')}}">
 
-  <link rel="stylesheet" href="{{ vncore_file('Vncore/admin/LTE/dist/css/adminlte.min.css')}}">
+  <link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/LTE/dist/css/adminlte.min.css')}}">
 
   @stack('styles')
 
@@ -124,38 +124,38 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="{{ vncore_file('Vncore/admin/LTE/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/LTE/plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="{{ vncore_file('Vncore/admin/LTE/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/LTE/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 {{-- <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script> --}}
 <!-- Bootstrap 4 -->
-<script src="{{ vncore_file('Vncore/admin/LTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/LTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- JQVMap -->
-<script src="{{ vncore_file('Vncore/admin/LTE/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
-<script src="{{ vncore_file('Vncore/admin/LTE/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/LTE/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/LTE/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
 <!-- Summernote -->
-<script src="{{ vncore_file('Vncore/admin/LTE/plugins/summernote/summernote-bs4.min.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/LTE/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- overlayScrollbars -->
-<script src="{{ vncore_file('Vncore/admin/LTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/LTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 
 <!-- Sparkline -->
-<script src="{{ vncore_file('Vncore/admin/LTE/plugins/sparklines/sparkline.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/LTE/plugins/sparklines/sparkline.js')}}"></script>
 <!-- FastClick -->
-<script src="{{ vncore_file('Vncore/admin/LTE/plugins/fastclick/fastclick.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/LTE/plugins/fastclick/fastclick.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{ vncore_file('Vncore/admin/LTE/dist/js/adminlte.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/LTE/dist/js/adminlte.js')}}"></script>
 {{-- sweetalert2 --}}
-<script src="{{ vncore_file('Vncore/admin/plugin/sweetalert2.all.min.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/plugin/sweetalert2.all.min.js')}}"></script>
 <!-- Select2 -->
-<script src="{{ vncore_file('Vncore/admin/LTE/plugins/select2/js/select2.full.min.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/LTE/plugins/select2/js/select2.full.min.js')}}"></script>
 {{-- switch --}}
-<script src="{{ vncore_file('Vncore/admin/plugin/bootstrap-switch.min.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/plugin/bootstrap-switch.min.js')}}"></script>
 
-<script src="{{ vncore_file('Vncore/admin/LTE/plugins/iCheck/icheck.min.js')}}"></script>
-<script src="{{ vncore_file('Vncore/admin/LTE/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/LTE/plugins/iCheck/icheck.min.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/LTE/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
 
 <script>
   $(function () {

@@ -61,12 +61,12 @@
 
 @push('styles')
 <!-- Ediable -->
-<link rel="stylesheet" href="{{ vncore_file('Vncore/admin/plugin/bootstrap-editable.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/plugin/bootstrap-editable.css')}}">
 @endpush
 
 @push('scripts')
 <!-- Ediable -->
-<script src="{{ vncore_file('Vncore/admin/plugin/bootstrap-editable.min.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/plugin/bootstrap-editable.min.js')}}"></script>
 
 <script type="text/javascript">
   // Editable

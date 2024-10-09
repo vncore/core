@@ -89,7 +89,7 @@
     @push('styles')
     <style type="text/css">
       .container-login100 {
-        background-image: url({!! vncore_file('Vncore/admin/images/bg-system.jpg') !!});
+        background-image: url({!! vncore_file('Vncore/Admin/images/bg-system.jpg') !!});
       }
     </style>
     @endpush

@@ -285,15 +285,15 @@
 
 @push('styles')
 <!-- Ediable -->
-<link rel="stylesheet" href="{{ vncore_file('Vncore/admin/plugin/nestable/jquery.nestable.min.css')}}">
-<link rel="stylesheet" href="{{ vncore_file('Vncore/admin/plugin/iconpicker/fontawesome-iconpicker.min.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/plugin/nestable/jquery.nestable.min.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/plugin/iconpicker/fontawesome-iconpicker.min.css')}}">
 @endpush
 
 @push('scripts')
 <!-- Ediable -->
 
-<script src="{{ vncore_file('Vncore/admin/plugin/nestable/jquery.nestable.min.js')}}"></script>
-<script src="{{ vncore_file('Vncore/admin/plugin/iconpicker/fontawesome-iconpicker.min.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/plugin/nestable/jquery.nestable.min.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/plugin/iconpicker/fontawesome-iconpicker.min.js')}}"></script>
 
 <script type="text/javascript">
 $('.remove_menu').click(function(event) {

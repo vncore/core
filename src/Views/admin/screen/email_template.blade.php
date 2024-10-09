@@ -109,15 +109,15 @@
 @endsection
 
 @push('styles')
-<link rel="stylesheet" href="{{ vncore_file('Vncore/admin/plugin/mirror/doc/docs.css')}}">
-<link rel="stylesheet" href="{{ vncore_file('Vncore/admin/plugin/mirror/lib/codemirror.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/plugin/mirror/doc/docs.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/plugin/mirror/lib/codemirror.css')}}">
 @endpush
 
 @push('scripts')
-<script src="{{ vncore_file('Vncore/admin/plugin/mirror/lib/codemirror.js')}}"></script>
-<script src="{{ vncore_file('Vncore/admin/plugin/mirror/mode/javascript/javascript.js')}}"></script>
-<script src="{{ vncore_file('Vncore/admin/plugin/mirror/mode/css/css.js')}}"></script>
-<script src="{{ vncore_file('Vncore/admin/plugin/mirror/mode/htmlmixed/htmlmixed.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/plugin/mirror/lib/codemirror.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/plugin/mirror/mode/javascript/javascript.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/plugin/mirror/mode/css/css.js')}}"></script>
+<script src="{{ vncore_file('Vncore/Admin/plugin/mirror/mode/htmlmixed/htmlmixed.js')}}"></script>
 <script>
     window.onload = function() {
       editor = CodeMirror(document.getElementById("text"), {

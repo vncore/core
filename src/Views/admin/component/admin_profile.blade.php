@@ -1,9 +1,9 @@
 @php
     $pathAvatar = '';
     if (admin()->user()) {
-        $pathAvatar = admin()->user()->avatar ? vncore_file(admin()->user()->avatar) : vncore_file('Vncore/admin/avatar/user.jpg');
+        $pathAvatar = admin()->user()->avatar ? vncore_file(admin()->user()->avatar) : vncore_file('Vncore/Admin/avatar/user.jpg');
     } else {
-        $pathAvatar = vncore_file('Vncore/admin/avatar/user.jpg');
+        $pathAvatar = vncore_file('Vncore/Admin/avatar/user.jpg');
     }
 @endphp
 <!-- User Account: style can be found in dropdown.less -->
