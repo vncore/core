@@ -111,7 +111,7 @@ class VncoreServiceProvider extends ServiceProvider
                     require_once $filename;
                 }
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE::core_helper_load:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
@@ -121,7 +121,7 @@ class VncoreServiceProvider extends ServiceProvider
             try {
                 DB::connection(VNCORE_DB_CONNECTION)->getPdo();
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE::Pdo_load:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
@@ -131,7 +131,11 @@ class VncoreServiceProvider extends ServiceProvider
             try {
                 $this->bootDefault();
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+
+                $msg = '#VNCORE::core_default_load:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile().PHP_EOL;
+                if (\Illuminate\Support\Facades\Storage::disk('local')->exists('vncore-installed.txt')) {
+                    $msg .= "--> Try delete the file vncore-installed.txt in the ".\Illuminate\Support\Facades\Storage::disk('local')->path('vncore-installed.txt').', then re-install vncore'.PHP_EOL;
+                }
                 vncore_report($msg);
                 echo $msg;
                 exit;
@@ -143,7 +147,7 @@ class VncoreServiceProvider extends ServiceProvider
                     $this->loadRoutesFrom($routes);
                 }
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE::core_route_load:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
@@ -157,7 +161,7 @@ class VncoreServiceProvider extends ServiceProvider
                     }
                 }
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE::core_api_route_load:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
@@ -166,7 +170,7 @@ class VncoreServiceProvider extends ServiceProvider
             try {
                 $this->registerRouteMiddleware();
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE::core_middeware_load:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
@@ -175,7 +179,7 @@ class VncoreServiceProvider extends ServiceProvider
             try {
                 $this->commands($this->listCommand);
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE::core_command_load:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
@@ -184,7 +188,7 @@ class VncoreServiceProvider extends ServiceProvider
             try {
                 $this->validationExtend();
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE::core_validate_load:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
@@ -202,7 +206,7 @@ class VncoreServiceProvider extends ServiceProvider
                     $this->loadRoutesFrom($filename);
                 }
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE::plugin_load:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
@@ -213,11 +217,11 @@ class VncoreServiceProvider extends ServiceProvider
                 foreach (glob(app_path().'/Vncore/Templates/*/Provider.php') as $filename) {
                     require_once $filename;
                 }
-                foreach (glob(app_path().'/Vncore/Plugins/*/Route.php') as $filename) {
+                foreach (glob(app_path().'/Vncore/Templates/*/Route.php') as $filename) {
                     $this->loadRoutesFrom($filename);
                 }
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE::template_load:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
@@ -229,7 +233,7 @@ class VncoreServiceProvider extends ServiceProvider
                     require_once $filename;
                 }
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE::helper_load:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
@@ -242,7 +246,7 @@ class VncoreServiceProvider extends ServiceProvider
                     vncore_add_module('homepage', 'VncoreBlock::'.$filename);
                 }
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE::block_load:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
@@ -297,7 +301,7 @@ class VncoreServiceProvider extends ServiceProvider
         
         config(['app.storeId' => $storeId]);
         // end set store Id
-
+        
         if (vncore_config_global('LOG_SLACK_WEBHOOK_URL')) {
             config(['logging.channels.slack.url' => vncore_config_global('LOG_SLACK_WEBHOOK_URL')]);
         }
