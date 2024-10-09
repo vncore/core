@@ -13,7 +13,7 @@ if(vncore_extension_check_active($config['configGroup'], $config['configKey'])) 
         [
             'prefix' => VNCORE_ADMIN_PREFIX.'/ExtensionUrlKey',
             'middleware' => VNCORE_ADMIN_MIDDLEWARE,
-            'namespace' => 'Vncore\Plugins\Extension_Key\Admin',
+            'namespace' => '\App\Vncore\Plugins\Extension_Key\Admin',
         ], 
         function () {
             Route::get('/', 'AdminController@index')

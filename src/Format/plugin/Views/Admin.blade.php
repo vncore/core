@@ -1,7 +1,11 @@
 @extends($vncore_templatePathAdmin.'layout')
 
 @section('main')
-    {{-- content --}}
+<div class="row">
+      <div class="col-md-12">
+            Your-content!
+      </div>
+</div>
 @endsection
 
 @push('styles')
