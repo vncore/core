@@ -8,7 +8,6 @@ class AdminConfig extends Model
     public $table = VNCORE_DB_PREFIX.'admin_config';
     protected $guarded = [];
 
-    protected static $getAll = null;
     protected static $getAllGlobal = null;
     protected static $getAllConfigOfStore = null;
     protected $connection = VNCORE_DB_CONNECTION;
@@ -87,22 +86,6 @@ class AdminConfig extends Model
         }
     }
 
-    /**
-     * [getAll description]
-     *
-     * @param[int] $store  [$store description]
-     *
-     * @return [type]          [return description]
-     */
-    public static function getListAll()
-    {
-        if (self::$getAll === null) {
-            self::$getAll = self::where('store_id', '<>', VNCORE_ID_GLOBAL)
-                ->get()
-                ->keyBy('store_id');
-        }
-        return self::$getAll;
-    }
 
     /**
      * [getAllGlobal description]
@@ -129,15 +112,11 @@ class AdminConfig extends Model
     public static function getAllConfigOfStore($storeId):array
     {
         if (self::$getAllConfigOfStore === null) {
-            self::$getAllConfigOfStore = self::get()
-                ->groupBy('store_id');
+            self::$getAllConfigOfStore = self::where('store_id', $storeId)
+                ->pluck('value', 'key')
+                ->all();
         }
-        $data =  self::$getAllConfigOfStore[$storeId] ?? collect();
-        if ($data) {
-            return $data->pluck('value', 'key')->all();
-        } else {
-            return [];
-        }
+        return self::$getAllConfigOfStore;
     }
 
     /**
