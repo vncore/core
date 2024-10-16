@@ -139,18 +139,42 @@ if (!function_exists('vncore_report') && !in_array('vncore_report', config('vnco
     /*
     Handle report
      */
-    function vncore_report($msg = "", array $ext = [])
+    function vncore_report($msg = "", $channel = 'slack')
     {
-        if (is_array($msg)) {
+        if (is_array($msg) || is_object($msg)) {
             $msg = json_encode($msg);
+        } elseif(is_string($msg)) {
+            $msg = $msg;
+        } else {
+            $msg = 'Type of msg is not supported';
         }
+        
         $msg = vncore_time_now(config('app.timezone')).' ('.config('app.timezone').'):'.PHP_EOL.$msg.PHP_EOL;
-        if (!in_array('slack', $ext)) {
-            if (config('logging.channels.slack.url')) {
-                try {
-                    \Log::channel('slack')->emergency($msg);
-                } catch (\Throwable $e) {
-                    $msg .= $e->getFile().'- Line: '.$e->getLine().PHP_EOL.$e->getMessage().PHP_EOL;
+
+        if (is_string($channel)) {
+            $channel = [$channel];
+        }
+        if (!is_array($channel)) {
+            $channel = [];
+        }
+        if (count($channel)) {
+            foreach ($channel as $key => $item) {
+                if (in_array($item, config('logging.channels'))) {
+                    if ($item ==='slack') {
+                        if (config('logging.channels.slack.url')) {
+                            try {
+                                \Log::channel('slack')->emergency($msg);
+                            } catch (\Throwable $e) {
+                                $msg .= $e->getFile().'- Line: '.$e->getLine().PHP_EOL.$e->getMessage().PHP_EOL;
+                            }
+                        }
+                    } else {
+                        try {
+                            \Log::channel($item)->emergency($msg);
+                        } catch (\Throwable $e) {
+                            $msg .= $e->getFile().'- Line: '.$e->getLine().PHP_EOL.$e->getMessage().PHP_EOL;
+                        }
+                    }
                 }
             }
         }
@@ -163,13 +187,13 @@ if (!function_exists('vncore_handle_exception') && !in_array('vncore_handle_exce
     /*
     Process msg exception
      */
-    function vncore_handle_exception(\Throwable $exception)
+    function vncore_handle_exception(\Throwable $exception, $channel = 'slack')
     {
         $msg = "```". $exception->getMessage().'```'.PHP_EOL;
         $msg .= "```IP:```".request()->ip().PHP_EOL;
         $msg .= "*File* `".$exception->getFile()."`, *Line:* ".$exception->getLine().", *Code:* ".$exception->getCode().PHP_EOL.'URL= '.url()->current();
         if (function_exists('vncore_report') && $msg) {
-            vncore_report(msg:$msg);
+            vncore_report(msg:$msg, channel:$channel);
         }
     }
 }
