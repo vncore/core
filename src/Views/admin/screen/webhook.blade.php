@@ -72,9 +72,6 @@ $(document).ready(function() {
 });
 </script>
 
-    {{-- //Pjax --}}
-   <script src="{{ vncore_file('Vncore/Admin/plugin/jquery.pjax.js')}}"></script>
-
   <script type="text/javascript">
 
     $('.grid-refresh').click(function(){

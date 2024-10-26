@@ -10,16 +10,16 @@ class Languages extends Model
     
     public $table = VNCORE_DB_PREFIX.'languages';
     protected $guarded = [];
-    private static $getList = null;
+    private static $getList = [];
     protected $connection = VNCORE_DB_CONNECTION;
 
 
     public static function getListAll($location)
     {
-        if (self::$getList === null) {
-            self::$getList = self::where('location', $location)->pluck('text', 'code');
+        if (!isset(self::$getList[$location])) {
+            self::$getList[$location] = self::where('location', $location)->pluck('text', 'code');
         }
-        return self::$getList;
+        return self::$getList[$location];
     }
 
     /**
