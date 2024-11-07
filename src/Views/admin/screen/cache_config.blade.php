@@ -84,9 +84,9 @@ $(document).ready(function() {
         },
         success: function(data) {
           if(data.error == 0){
-            alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
+            alertJs('success', data.msg);
           } else {
-            alertJs('error', response.msg);
+            alertJs('error', data.msg);
           }
       }
     });
@@ -108,11 +108,11 @@ $(document).ready(function() {
         }
      },
   
-      success: function(response, newValue) {
-        if(response.error == 0){
+      success: function(data, newValue) {
+        if(data.error == 0){
           alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
         } else {
-          alertJs('error', response.msg);
+          alertJs('error', data.msg);
         }
     }
   });
