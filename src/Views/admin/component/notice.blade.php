@@ -27,7 +27,7 @@
         <i class="far fa-bell"></i>
         @endif
         {{ vncore_content_render($notice->content) }}
-      <span class="text-muted notice-time">{{ vncore_datetime_to_date($notice->created_at, 'Y-m-d H:i:s') }}</span>
+      <span class="text-muted notice-time">[{{ $notice->admin->name ?? $notice->admin_id}}] {{ vncore_datetime_to_date($notice->created_at, 'Y-m-d H:i:s') }}</span>
       </a>
     @endforeach
     <div class="dropdown-divider"></div>
