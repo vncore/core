@@ -35,7 +35,7 @@ class AdminNotice extends Model
     public static function getTopNotice()
     {
         $data = self::where('admin_id', admin()->user()->id);
-        $data = $data->limit(10)
+        $data = $data->with('admin')->limit(10)
             ->orderBy('id','desc')
             ->get();
 
