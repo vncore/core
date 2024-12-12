@@ -372,10 +372,10 @@ if (!function_exists('vncore_process_private_folder') && !in_array('vncore_proce
     function vncore_process_private_folder()
     {
         //Process private folder for laravel file manager if packages multi app exist
-        if (session('pmo_partner_id') && \Illuminate\Support\Str::startsWith(request('type'),['pmo_'])) {
-            return session('pmo_partner_id');
+        if (session('partner_id') && \Illuminate\Support\Str::startsWith(request('type'),['pmo_','partner_'])) {
+            return session('partner_id');
         }
-        if (session('adminStoreId') && \Illuminate\Support\Str::startsWith(request('type'),['vendor_','store_','shop_'])) {
+        if (session('adminStoreId') && \Illuminate\Support\Str::startsWith(request('type'),['vendor_','store_','shop_','partner_'])) {
             return session('adminStoreId');
         }
         return ;
