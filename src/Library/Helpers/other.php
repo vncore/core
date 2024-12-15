@@ -270,7 +270,7 @@ if (!function_exists('vncore_time_now') && !in_array('vncore_time_now', config('
 
 if (!function_exists('vncore_request') && !in_array('vncore_request', config('vncore_functions_except', []))) {
     /**
-     * Return object carbon
+     * Return value request
      */
     function vncore_request($key = "", $default = "", string $type = "")
     {

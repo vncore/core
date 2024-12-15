@@ -88,7 +88,9 @@ trait  ExtensionController
         if ($this->type == 'Template') {
             $checkTemplateUse = (new AdminStore)->where('template', $key)->count();
             if ($checkTemplateUse) {
-                return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.extension.error_template_use')]);
+                $msg = vncore_language_render('admin.extension.error_template_use');
+                vncore_report(msg:$msg, channel:null);
+                return response()->json(['error' => 1, 'msg' => $msg]);
             }
         }
 
@@ -187,7 +189,9 @@ trait  ExtensionController
         $pathFile = vncore_file_upload($data['file'], $disk = 'tmp', $pathFolder = $pathTmp)['pathFile'] ?? '';
 
         if (!is_writable(storage_path('tmp'))) {
-            return response()->json(['error' => 1, 'msg' => 'No write permission '.storage_path('tmp')]);
+            $msg = 'No write permission '.storage_path('tmp');
+            vncore_report(msg:$msg, channel:null);
+            return response()->json(['error' => 1, 'msg' => $msg]);
         }
         
         if ($pathFile) {
@@ -218,18 +222,26 @@ trait  ExtensionController
                     //Check extension exist
                     $arrPluginLocal = vncore_extension_get_all_local(type: $this->type);
                     if (array_key_exists($configKey, $arrPluginLocal)) {
+                        $msg = vncore_language_render('admin.extension.error_exist');
+                        vncore_report(msg:$msg, channel:null);
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        return redirect()->back()->with('error', vncore_language_render('admin.extension.error_exist'));
+                        return redirect()->back()->with('error', $msg);
                     }
 
                     $appPath = 'Vncore/'.$configGroup.'/'.$configKey;
 
                     if (!is_writable($checkPubPath = public_path('Vncore/'.$configGroup))) {
-                        return response()->json(['error' => 1, 'msg' => 'No write permission '.$checkPubPath]);
+                        $msg = 'No write permission '.$checkPubPath;
+                        vncore_report(msg:$msg, channel:null);
+                        File::deleteDirectory(storage_path('tmp/'.$pathTmp));
+                        return redirect()->back()->with('error', $msg);
                     }
             
                     if (!is_writable($checkAppPath = app_path('Vncore/'.$configGroup))) {
-                        return response()->json(['error' => 1, 'msg' => 'No write permission '.$checkAppPath]);
+                        $msg = 'No write permission '.$checkAppPath;
+                        vncore_report(msg:$msg, channel:null);
+                        File::deleteDirectory(storage_path('tmp/'.$pathTmp));
+                        return redirect()->back()->with('error', $msg);
                     }
 
                     try {
@@ -239,22 +251,32 @@ trait  ExtensionController
                         $namespace = vncore_extension_get_class_config(type:$this->type, key:$configKey);
                         $response = (new $namespace)->install();
                         if (!is_array($response) || $response['error'] == 1) {
-                            return redirect()->back()->with('error', $response['msg']);
+                            $msg = $response['msg'];
+                            vncore_report(msg:$msg, channel:null);
+                            return redirect()->back()->with('error', $msg);
                         }
-                        $linkRedirect = route('admin_plugin');
+                        $linkRedirect = route('admin_plugin.index');
                     } catch (\Throwable $e) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        return redirect()->back()->with('error', $e->getMessage());
+                        $msg = $e->getMessage();
+                        vncore_report(msg:$msg, channel:null);
+                        return redirect()->back()->with('error', $msg);
                     }
                 } else {
                     File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                    return redirect()->back()->with('error', vncore_language_render('admin.extension.error_check_config'));
+                    $msg = vncore_language_render('admin.extension.error_check_config');
+                    vncore_report(msg:$msg, channel:null);
+                    return redirect()->back()->with('error', $msg);
                 }
             } else {
-                return redirect()->back()->with('error', vncore_language_render('admin.extension.error_unzip'));
+                $msg = vncore_language_render('admin.extension.error_unzip');
+                vncore_report(msg:$msg, channel:null);
+                return redirect()->back()->with('error', $msg);
             }
         } else {
-            return redirect()->back()->with('error', vncore_language_render('admin.extension.error_upload'));
+            $msg = vncore_language_render('admin.extension.error_upload');
+            vncore_report(msg:$msg, channel:null);
+            return redirect()->back()->with('error', $msg);
         }
 
         vncore_notice_add(type:$this->type, typeId: $configKey, content:'admin_notice.vncore_'.strtolower($this->type).'_import::name__'.$configKey);

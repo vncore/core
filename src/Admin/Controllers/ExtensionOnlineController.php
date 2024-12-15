@@ -121,15 +121,21 @@ trait ExtensionOnlineController
         $appPath = 'Vncore/'.$this->groupType.'/'.$key;
 
         if (!is_writable(public_path('Vncore/'.$this->groupType))) {
-            return response()->json(['error' => 1, 'msg' => 'No write permission '.public_path('Vncore/'.$this->groupType.'/')]);
+            $msg = 'No write permission '.public_path('Vncore/'.$this->groupType.'/');
+            vncore_report(msg:$msg, channel:null);
+            return response()->json(['error' => 1, 'msg' => $msg]);
         }
 
         if (!is_writable(app_path('Vncore/'.$this->groupType.'/'))) {
-            return response()->json(['error' => 1, 'msg' => 'No write permission '.app_path('Vncore/'.$this->groupType.'/')]);
+            $msg = 'No write permission '.app_path('Vncore/'.$this->groupType.'/');
+            vncore_report(msg:$msg, channel:null);
+            return response()->json(['error' => 1, 'msg' => $msg]);
         }
 
         if (!is_writable(storage_path('tmp'))) {
-            return response()->json(['error' => 1, 'msg' => 'No write permission '.storage_path('tmp')]);
+            $msg = 'No write permission '.storage_path('tmp');
+            vncore_report(msg:$msg, channel:null);
+            return response()->json(['error' => 1, 'msg' => $msg]);
         }
 
         try {
@@ -164,10 +170,14 @@ trait ExtensionOnlineController
                 }
 
             } else {
-                $response = ['error' => 1, 'msg' => 'error while unzip'];
+                $msg = 'error while unzip';
+                vncore_report(msg:$msg, channel:null);
+                $response = ['error' => 1, 'msg' => $msg];
             }
         } catch (\Throwable $e) {
-            $response = ['error' => 1, 'msg' => $e->getMessage()];
+            $msg = $e->getMessage();
+            vncore_report(msg:$msg, channel:null);
+            $response = ['error' => 1, 'msg' => $msg];
         }
         if (is_array($response) && $response['error'] == 0) {
             vncore_notice_add(type: $this->type, typeId: $key, content:'admin_notice.vncore_'.strtolower($this->type).'_install::name__'.$key);
