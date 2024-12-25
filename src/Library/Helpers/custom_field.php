@@ -6,7 +6,7 @@ use Vncore\Core\Admin\Controllers\AdminCustomFieldController;
  * Update custom field
  */
 if (!function_exists('vncore_update_custom_field') && !in_array('vncore_update_custom_field', config('vncore_functions_except', []))) {
-    function vncore_update_custom_field(array $fields = [], string $itemId, string $type)
+    function vncore_update_custom_field(array $fields, string $itemId, string $type)
     {
         $arrFields = array_keys((new AdminCustomFieldController)->fieldTypes());
         if (in_array($type, $arrFields) && !empty($fields)) {
