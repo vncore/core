@@ -290,3 +290,13 @@ if (!function_exists('vncore_request') && !in_array('vncore_request', config('vn
         return request($key, $default);
     }
 }
+
+
+// Function get all package installed in composer.json
+if (!function_exists('vncore_composer_get_package_installed') && !in_array('vncore_composer_get_package_installed', config('vncore_functions_except', []))) {
+    function vncore_composer_get_package_installed()
+    {
+        $installed = \Composer\InstalledVersions::getAllRawData();
+        return $installed;
+    }
+}
