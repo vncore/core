@@ -42,6 +42,7 @@ class Customize extends Command
 
             case 'view':
                 $this->call('vendor:publish', ['--tag' => 'vncore:view-admin']);
+                $this->call('vendor:publish', ['--tag' => 'vncore:view-front']);
                 break;
 
             case 'static':
