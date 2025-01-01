@@ -48,9 +48,7 @@ class VncoreServiceProvider extends ServiceProvider
             if (!is_dir($directory = app_path('Vncore/Helpers'))) {
                 mkdir($directory, 0755, true);
             }
-            if (!is_dir($directory = app_path('Vncore/Templates'))) {
-                mkdir($directory, 0755, true);
-            }
+
             if (!is_dir($directory = app_path('Vncore/Blocks'))) {
                 mkdir($directory, 0755, true);
             }
