@@ -341,9 +341,6 @@ class VncoreServiceProvider extends ServiceProvider
 
         //Share variable for view
         view()->share('vncore_languages', vncore_language_all());
-        view()->share('vncore_templatePath', 'Vncore.Templates.'.vncore_store_info('template'));
-        view()->share('vncore_templateFile', 'Vncore/Templates/'.vncore_store_info('template'));
-        //
         view()->share('vncore_templatePathAdmin', config('vncore-config.admin.path_view').'::');
     }
 
