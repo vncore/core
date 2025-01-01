@@ -192,7 +192,7 @@ class VncoreServiceProvider extends ServiceProvider
                 exit;
             }
 
-            $this->loadViewsFrom(__DIR__.'/Views/admin', config('vncore-config.admin.path_view'));
+            $this->loadViewsFrom(__DIR__.'/Views/admin', 'vncore-admin');
             $this->loadViewsFrom(app_path().'/Vncore/Blocks', 'VncoreBlock');
     
             //Load Plugin Provider
@@ -339,7 +339,6 @@ class VncoreServiceProvider extends ServiceProvider
 
         //Share variable for view
         view()->share('vncore_languages', vncore_language_all());
-        view()->share('vncore_templatePathAdmin', config('vncore-config.admin.path_view').'::');
     }
 
     /**
@@ -414,7 +413,7 @@ class VncoreServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([__DIR__.'/public/Vncore' => public_path('Vncore')], 'vncore:public-static');
             $this->publishes([__DIR__.'/public/vendor' => public_path('vendor')], 'vncore:public-vendor');
-            $this->publishes([__DIR__.'/Views/admin' => resource_path('views/vendor/'.config('vncore-config.admin.path_view'))], 'vncore:view-admin');
+            $this->publishes([__DIR__.'/Views/admin' => resource_path('views/vendor/vncore-admin')], 'vncore:view-admin');
             $this->publishes([__DIR__.'/Config/vncore-config.php' => config_path('vncore-config.php')], 'vncore:config');
             $this->publishes([__DIR__.'/Config/lfm.php' => config_path('lfm.php')], 'vncore:config-lfm');
             $this->publishes([__DIR__.'/Config/vncore_functions_except.stub' => config_path('vncore_functions_except.php')], 'vncore:functions-except');

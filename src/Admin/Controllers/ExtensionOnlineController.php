@@ -97,7 +97,7 @@ trait ExtensionOnlineController
         }
 
     
-        return view($this->vncore_templatePathAdmin.'screen.extension_online')->with(
+        return view('vncore-admin::screen.extension_online')->with(
             [
                     "title"              => $title,
                     "arrExtensionsLocal" => vncore_extension_get_all_local(type: $this->type),

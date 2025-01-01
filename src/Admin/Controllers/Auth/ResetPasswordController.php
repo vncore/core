@@ -58,7 +58,7 @@ class ResetPasswordController extends RootAdminController
                 'title'       => vncore_language_render('admin.password_reset'),
                 'token'       => $token,
             ];
-        return view($this->vncore_templatePathAdmin.'auth.reset')
+        return view('vncore-admin::auth.reset')
         ->with($data);
     }
 

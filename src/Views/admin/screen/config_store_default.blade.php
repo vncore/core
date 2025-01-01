@@ -1,4 +1,4 @@
-@extends($vncore_templatePathAdmin.'layout')
+@extends('vncore-admin::layout')
 @section('main')
       <div class="card card-primary card-outline card-outline-tabs">
         <div class="card-header p-0 border-bottom-0">
@@ -20,19 +20,19 @@
 
             {{-- Tab admin email --}}
             <div class="tab-pane fade active show" id="tab-admin-email" role="tabpanel" aria-labelledby="tab-admin-email-tab">
-              @include($vncore_templatePathAdmin.'screen.config_store.config_admin_email')
+              @include('vncore-admin::screen.config_store.config_admin_email')
             </div>
             {{-- // admin email --}}
 
             {{-- Tab admin config --}}
             <div class="tab-pane fade" id="tab-admin-other" role="tabpanel" aria-labelledby="tab-admin-other-tab">
-              @include($vncore_templatePathAdmin.'screen.config_store.config_admin_other')
+              @include('vncore-admin::screen.config_store.config_admin_other')
             </div>
             {{-- // admin config --}}
 
             {{-- Tab admin config customize --}}
             <div class="tab-pane fade" id="tab-admin-customize" role="tabpanel" aria-labelledby="tab-admin-customize-tab">
-              @include($vncore_templatePathAdmin.'screen.config_store.config_admin_customize')
+              @include('vncore-admin::screen.config_store.config_admin_customize')
             </div>
             {{-- // admin config customize --}}
 

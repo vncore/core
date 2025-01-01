@@ -90,7 +90,7 @@ class AdminLogController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vncore_templatePathAdmin.'component.pagination');
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links('vncore-admin::component.pagination');
         $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuSearch
@@ -115,7 +115,7 @@ class AdminLogController extends RootAdminController
                 </form>';
         //=topMenuRight
 
-        return view($this->vncore_templatePathAdmin.'screen.list')
+        return view('vncore-admin::screen.list')
             ->with($data);
     }
 

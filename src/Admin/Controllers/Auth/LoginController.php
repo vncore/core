@@ -28,7 +28,7 @@ class LoginController extends RootAdminController
             return redirect($this->redirectPath());
         }
 
-        return view($this->vncore_templatePathAdmin.'auth.login', ['title'=> vncore_language_render('admin.login')]);
+        return view('vncore-admin::auth.login', ['title'=> vncore_language_render('admin.login')]);
     }
 
     /**
@@ -101,7 +101,7 @@ class LoginController extends RootAdminController
             'permission' => (new AdminPermission)->pluck('name', 'id')->all(),
             'url_action' => vncore_route_admin('admin.post_setting'),
         ];
-        return view($this->vncore_templatePathAdmin.'auth.setting')
+        return view('vncore-admin::auth.setting')
             ->with($data);
     }
 

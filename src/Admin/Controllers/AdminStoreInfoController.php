@@ -126,7 +126,7 @@ class AdminStoreInfoController extends RootAdminController
                 'subTitle' => '',
                 'dataNotFound' => 1
             ];
-            return view($this->vncore_templatePathAdmin.'screen.store_info')
+            return view('vncore-admin::screen.store_info')
             ->with($data);
         }
         $data = [
@@ -138,7 +138,7 @@ class AdminStoreInfoController extends RootAdminController
         $data['languages'] = $this->languages;
         $data['storeId'] = $id;
 
-        return view($this->vncore_templatePathAdmin.'screen.store_info')
+        return view('vncore-admin::screen.store_info')
         ->with($data);
     }
 }

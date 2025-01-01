@@ -73,6 +73,6 @@ if (!function_exists('vncore_mail_admin_send_reset_notification') && !in_array('
             'subject' => vncore_language_render('email.forgot_password.reset_button'),
         ];
 
-        vncore_mail_send(config('vncore-config.admin.path_view').'::email.forgot_password', $dataView, $config, $dataAtt = []);
+        vncore_mail_send('vncore-admin::email.forgot_password', $dataView, $config, $dataAtt = []);
     }
 }

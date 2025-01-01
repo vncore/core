@@ -31,7 +31,7 @@
   {{-- <link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/LTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}"> --}}
 
   @section('block_component_css')
-    @include($vncore_templatePathAdmin.'component.css')
+    @include('vncore-admin::component.css')
   @show
 
   <link rel="stylesheet" href="{{ vncore_file('Vncore/Admin/LTE/plugins/jquery-ui/jquery-ui.min.css')}}">
@@ -47,11 +47,11 @@
 <div class="wrapper">
 
   @section('block_header')
-    @include($vncore_templatePathAdmin.'header')
+    @include('vncore-admin::header')
   @show
 
   @section('block_sidebar')
-    @include($vncore_templatePathAdmin.'sidebar')
+    @include('vncore-admin::sidebar')
   @show
 
   <!-- Content Wrapper. Contains page content -->
@@ -105,7 +105,7 @@
   <!-- /.content-wrapper -->
 
   @section('block_footer')
-    @include($vncore_templatePathAdmin.'footer')
+    @include('vncore-admin::footer')
   @show
 
   <!-- Control Sidebar -->
@@ -166,11 +166,11 @@
 @stack('scripts')
 
 @section('block_component_script')
-@include($vncore_templatePathAdmin.'component.script')
+@include('vncore-admin::component.script')
 @show
 
 @section('block_component_alerts')
-@include($vncore_templatePathAdmin.'component.alerts')
+@include('vncore-admin::component.alerts')
 @show
 
 </body>

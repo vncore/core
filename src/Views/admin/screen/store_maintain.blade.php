@@ -1,4 +1,4 @@
-@extends($vncore_templatePathAdmin.'layout')
+@extends('vncore-admin::layout')
 
 @section('main')
 <div class="row">
@@ -95,7 +95,7 @@
 @endpush
 
 @push('scripts')
-@include($vncore_templatePathAdmin.'component.ckeditor_js')
+@include('vncore-admin::component.ckeditor_js')
 
 
 <script type="text/javascript">

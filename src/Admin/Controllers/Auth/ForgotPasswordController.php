@@ -73,7 +73,7 @@ class ForgotPasswordController extends RootAdminController
         $data = [
             'title'       => vncore_language_render('admin.password_forgot'),
         ];
-        return view($this->vncore_templatePathAdmin.'auth.forgot')
+        return view('vncore-admin::auth.forgot')
         ->with($data);
     }
     

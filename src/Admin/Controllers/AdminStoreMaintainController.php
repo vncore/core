@@ -34,7 +34,7 @@ class AdminStoreMaintainController extends RootAdminController
             'maintain' => $maintain,
             'url_action' => vncore_route_admin('admin_store_maintain.index'),
         ];
-        return view($this->vncore_templatePathAdmin.'screen.store_maintain')
+        return view('vncore-admin::screen.store_maintain')
             ->with($data);
     }
 

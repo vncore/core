@@ -1,4 +1,4 @@
-@extends($vncore_templatePathAdmin.'layout')
+@extends('vncore-admin::layout')
 
 @if (!empty($dataNotFound))
   @section('main')

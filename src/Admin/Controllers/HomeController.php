@@ -19,13 +19,13 @@ class HomeController extends RootAdminController
         $data                   = [];
         $data['blockDashboard'] = $blockDashboard;
         $data['title']          = vncore_language_render('admin.home');
-        return view($this->vncore_templatePathAdmin.'home', $data);
+        return view('vncore-admin::home', $data);
     }
 
     public function default()
     {
         $data['title'] = vncore_language_render('admin.home');
-        return view($this->vncore_templatePathAdmin.'default', $data);
+        return view('vncore-admin::default', $data);
     }
 
     /**
@@ -39,7 +39,7 @@ class HomeController extends RootAdminController
             'title' => vncore_language_render('admin.data_not_found'),
             'url' => session('url'),
         ];
-        return view($this->vncore_templatePathAdmin.'data_not_found', $data);
+        return view('vncore-admin::data_not_found', $data);
     }
 
 
@@ -55,7 +55,7 @@ class HomeController extends RootAdminController
             'method' => session('method'),
             'url' => session('url'),
         ];
-        return view($this->vncore_templatePathAdmin.'deny', $data);
+        return view('vncore-admin::deny', $data);
     }
 
     /**
@@ -69,6 +69,6 @@ class HomeController extends RootAdminController
             'method' => session('method'),
             'url' => session('url'),
         ];
-        return view($this->vncore_templatePathAdmin.'deny_single', $data);
+        return view('vncore-admin::deny_single', $data);
     }
 }

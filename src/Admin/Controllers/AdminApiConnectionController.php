@@ -68,10 +68,10 @@ class AdminApiConnectionController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['listApi'] = $listApi;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vncore_templatePathAdmin.'component.pagination');
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links('vncore-admin::component.pagination');
         $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
     
-        return view($this->vncore_templatePathAdmin.'screen.api_connection')
+        return view('vncore-admin::screen.api_connection')
             ->with($data);
     }
 
@@ -169,14 +169,14 @@ class AdminApiConnectionController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vncore_templatePathAdmin.'component.pagination');
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links('vncore-admin::component.pagination');
         $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
     
         $data['rightContentMain'] = '<input class="switch-data-config" data-store=0 name="api_connection_required" type="checkbox"  '.(vncore_config_global('api_connection_required')?'checked':'').'><br> '.vncore_language_render('admin.api_connection.api_connection_required_help');
 
         $optionSort = '';
         $data['optionSort'] = $optionSort;
-        return view($this->vncore_templatePathAdmin.'screen.api_connection')
+        return view('vncore-admin::screen.api_connection')
         ->with($data);
     }
 

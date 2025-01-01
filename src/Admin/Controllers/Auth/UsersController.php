@@ -99,7 +99,7 @@ class UsersController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vncore_templatePathAdmin.'component.pagination');
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links('vncore-admin::component.pagination');
         $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuRight
@@ -131,7 +131,7 @@ class UsersController extends RootAdminController
         //=menuSearch
 
 
-        return view($this->vncore_templatePathAdmin.'screen.list')
+        return view('vncore-admin::screen.list')
             ->with($data);
     }
 
@@ -151,7 +151,7 @@ class UsersController extends RootAdminController
             'url_action'        => vncore_route_admin('admin_user.post_create'),
         ];
 
-        return view($this->vncore_templatePathAdmin.'auth.user')
+        return view('vncore-admin::auth.user')
             ->with($data);
     }
 
@@ -235,7 +235,7 @@ class UsersController extends RootAdminController
             'isAllStore'        => ($user->isAdministrator() || $user->isViewAll()) ? 1: 0,
 
         ];
-        return view($this->vncore_templatePathAdmin.'auth.user')
+        return view('vncore-admin::auth.user')
             ->with($data);
     }
 

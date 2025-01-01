@@ -1,4 +1,4 @@
-@extends($vncore_templatePathAdmin.'email.layout')
+@extends('vncore-admin::email.layout')
 
 @section('main')
 

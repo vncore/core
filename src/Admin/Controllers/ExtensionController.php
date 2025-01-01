@@ -48,7 +48,7 @@ trait  ExtensionController
                 ];
                 break;
         }
-        return view($this->vncore_templatePathAdmin.'screen.extension')->with(
+        return view('vncore-admin::screen.extension')->with(
             [
                 "title"               => vncore_language_render('admin.extension.management', ['extension' => $this->type]),
                 "groupType"           => $this->groupType,
@@ -160,7 +160,7 @@ trait  ExtensionController
             'title' => vncore_language_render('admin.extension.import'),
             'urlAction' => vncore_route_admin('admin_'.strtolower($this->type).'.process_import')
         ];
-        return view($this->vncore_templatePathAdmin.'screen.extension_upload')
+        return view('vncore-admin::screen.extension_upload')
         ->with($data);
     }
 

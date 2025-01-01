@@ -82,7 +82,7 @@ class RoleController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vncore_templatePathAdmin.'component.pagination');
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links('vncore-admin::component.pagination');
         $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuRight
@@ -113,7 +113,7 @@ class RoleController extends RootAdminController
                 </form>';
         //=topMenuRight
 
-        return view($this->vncore_templatePathAdmin.'screen.list')
+        return view('vncore-admin::screen.list')
             ->with($data);
     }
 
@@ -134,7 +134,7 @@ class RoleController extends RootAdminController
 
         ];
 
-        return view($this->vncore_templatePathAdmin.'auth.role')
+        return view('vncore-admin::auth.role')
             ->with($data);
     }
 
@@ -196,7 +196,7 @@ class RoleController extends RootAdminController
             'userList' => (new AdminUser)->pluck('name', 'id')->all(),
             'url_action' => vncore_route_admin('admin_role.post_edit', ['id' => $role['id']]),
         ];
-        return view($this->vncore_templatePathAdmin.'auth.role')
+        return view('vncore-admin::auth.role')
             ->with($data);
     }
 

@@ -140,7 +140,7 @@ class AdminStoreConfigController extends RootAdminController
         $data['urlUpdateConfig']                = vncore_route_admin('admin_config.update');
         $data['urlUpdateConfigGlobal']          = vncore_route_admin('admin_config_global.update');
 
-        return view($this->vncore_templatePathAdmin.'screen.config_store_default')
+        return view('vncore-admin::screen.config_store_default')
         ->with($data);
     }
 

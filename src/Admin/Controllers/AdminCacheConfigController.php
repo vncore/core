@@ -19,7 +19,7 @@ class AdminCacheConfigController extends RootAdminController
         $configs = AdminConfig::getListConfigByCode(['code' => 'cache']);
         $data['configs'] = $configs;
         $data['urlUpdateConfigGlobal'] = vncore_route_admin('admin_config_global.update');
-        return view($this->vncore_templatePathAdmin.'screen.cache_config')
+        return view('vncore-admin::screen.cache_config')
             ->with($data);
     }
 

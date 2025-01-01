@@ -1,7 +1,7 @@
-@extends($vncore_templatePathAdmin.'layout_portable')
+@extends('vncore-admin::layout_portable')
 
 @section('main')
-@include($vncore_templatePathAdmin.'component.css_login')
+@include('vncore-admin::component.css_login')
     <div class="container-login100">
       <div class="wrap-login100 main-login">
 
